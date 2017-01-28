@@ -10,12 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+Route::get('/','FrontController@index');
+//Rutas de la pagina principal de contratos
+Route::get('contratos','contratoController@contratos');
+//Actas de contrato
+Route::get('actainicial','contratoController@actainicial');
+Route::get('actaparcial','contratoController@actaparcial');
+Route::get('actafinal','contratoController@actafinal');
+//archivos de contrato
+Route::get('archivos','contratoController@archivos');
+//buscar contrato
+Route::get('buscar','contratoController@buscar');
+//certificacion de contrato
+Route::get('certificacion','contratoController@certificacion');
+Route::resource('contrato','ContratoController');
