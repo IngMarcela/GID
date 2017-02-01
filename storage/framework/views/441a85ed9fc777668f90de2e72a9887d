@@ -1,0 +1,31 @@
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('asig'); ?>
+AGREGAR CONTRATO
+<p>ACTA PARCIAL</p>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::open(['class' => 'form-horizontal','url'=>'actafinal']); ?>
+
+	<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Detalle</th>     
+        <th>PDF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php echo Form::text('actap1',null,['class'=>'form-control','placeholder'=>'Acta Parcial']); ?></td>
+        <td><?php echo Form::file('actap2'); ?></td>
+      </tr>
+    </tbody>
+  </table>
+	</div>
+	<div class="col-sm-12 text-center">	
+		<?php echo Form::submit('SIGUIENTE',['class'=>'btn btn-primary']); ?>		 
+	</div>	
+	<?php echo Form::close(); ?>		 
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layout.principal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

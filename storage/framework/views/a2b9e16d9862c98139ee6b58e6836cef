@@ -1,0 +1,202 @@
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('asig'); ?>
+AGREGAR CONTRATO
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<!-- formulario -->
+	<?php echo Form::open(['class' => 'form-horizontal','url'=>'actainicial']); ?>
+
+	<div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de caja -->
+				<?php echo Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>
+
+				<div class="col-xs-2"><!-- Fcaja de texto -->	
+					<?php echo Form::text('caja',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+
+				</div>	
+			</div>    	
+    	</div>
+    </div>
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de carpeta -->
+				<?php echo Form::label('Carpeta', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<div class="col-xs-2"><!-- caja de texto -->	
+					<?php echo Form::text('carpeta',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div>
+	<div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de No contrato -->
+				<?php echo Form::label('No Contrato', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<div class="col-xs-2"><!-- caja de texto -->	
+					<?php echo Form::text('numco',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div>
+	<div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- estado del contrato -->
+				<?php echo Form::label('Estado del Contrato', null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-2"><!-- opciones en el valor del estado del contrato -->
+					<?php echo Form::select('estco',['Ejectado', 'No ejecutado'],null,['class' => 'form-control','id' => 'estado']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div>	
+	<div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label del tipo de contrto -->
+				<?php echo Form::label('Tipo de Contrato', null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-2"><!-- seleccion de opcuon del tipo de contrato -->
+					<?php echo Form::select('tipco',['Obra','Suministro','Civil','prestacion de servicio'],null,['class' => 'form-control']); ?>
+
+				</div>	
+			</div>	
+    	</div>
+    </div>	 
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label de la fecha en que se firma el contrato -->
+				<?php echo Form::label('Fecha de Inicio',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- un panel con el calendario -->
+					<?php echo Form::date('fedin',null,['class'=>'form-control']); ?>
+
+				</div>
+			</div>	
+    	</div>
+    </div>	 
+	<div class="col-sm-12 text-center">	 
+		<div class="form-group"><!-- label del objeto -->
+			<?php echo Form::label('Objeto',null, array('class' => 'control-label col-xs-3')); ?>
+
+			<div class="col-xs-7"><!-- caja de texto, pero con gran espacio -->
+				<?php echo Form::textarea('objet',null,['class'=>'form-control','placeholder'=>'Ingresa el Objeto del Contrato','size' => '20x5']); ?>
+
+			</div>
+		</div>	
+	</div>    
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label de Departamento -->
+				<?php echo Form::label('Departamento',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- caja de texto -->
+					<?php echo Form::text('depar',null,['class'=>'form-control','placeholder'=>'Ingresa el Departamento']); ?>
+
+				</div>	
+			</div>	
+    	</div>
+    </div>
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- Municipio -->
+				<?php echo Form::label('Municipio/Vereda',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- caja de texto -->
+					<?php echo Form::text('munve',null,['class'=>'form-control','placeholder'=>'Ingresa el Departamento']); ?>
+
+				</div>
+			</div>	
+    	</div>
+    </div>     
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- valor en que se firmo el contrato -->
+				<?php echo Form::label('Valor Total',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- caja de texto -->
+					<?php echo Form::number('valto',null,['class'=>'form-control','placeholder'=>'Ingresa el valor total']); ?>
+
+				</div>
+			</div>	
+    	</div>
+    </div>    
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- valor en que se finalizo -->
+				<?php echo Form::label('Valor ejecutada',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- caja de texto -->
+					<?php echo Form::number('valej',null,['class'=>'form-control','placeholder'=>'Ingresa el valor ejecutada']); ?>
+
+				</div>
+			</div>	
+    	</div>
+    </div>   
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label del contratante -->
+				<?php echo Form::label('contratante',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- caja de texto -->
+					<?php echo Form::text('contr',null,['class'=>'form-control','placeholder'=>'Ingresa el Contratante']); ?>
+
+				</div>
+			</div>
+    	</div>
+    </div>  
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label del tipo de contratante -->
+				<?php echo Form::label('Tipo de contratante', null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-2"><!-- Fseleccionar el tipo de contratante -->
+					<?php echo Form::select('tipte',['Publico', 'Privado'],null,['class' => 'form-control']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div>             
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label de contratista -->
+				<?php echo Form::label('Contratista',null, array('class' => 'control-label col-xs-3')); ?>
+
+				<div class="col-xs-3"><!-- Opciones del contratista -->
+					<?php echo Form::select('conas', ['Electrosistemas del Cauca/IDJ','Terceros'],null,['class' => 'form-control']); ?>
+
+				</div>
+			</div>	
+    	</div>
+    </div>  
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- la opcion del rut -->
+				<?php echo Form::label('RUT', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<div class="col-xs-2"><!-- caja de texto -->	
+					<?php echo Form::text('rut',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div>
+	<div class="col-sm-12 text-center">	 
+		<div class="form-group"><!-- comentario -->
+			<?php echo Form::label('Comentario',null, array('class' => 'control-label col-xs-3')); ?>
+
+			<div class="col-xs-7"><!-- Caja de texto -->
+				<?php echo Form::textarea('comen',null,['class'=>'form-control','placeholder'=>'Ingresa los comentarios del proyecto','size' => '30x5']); ?>
+
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 text-center">	
+		<?php echo Form::submit('GUARDAR',['class'=>'btn btn-primary']); ?>		 
+	</div>
+
+	<?php echo Form::close(); ?>	
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layout.principal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

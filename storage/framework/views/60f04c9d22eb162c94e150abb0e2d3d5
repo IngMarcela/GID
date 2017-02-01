@@ -1,0 +1,37 @@
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('asig'); ?>
+AGREGAR CONTRATO
+<p>ACTA INICIAL</p>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::open(['class' => 'form-horizontal','url'=>'archivos']); ?>
+
+	<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Detalle</th>
+        <th>Valor final</th>
+        <th>Fecha de firma</th>       
+        <th>PDF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><?php echo Form::text('no',null,['class'=>'form-control','placeholder'=>'No']); ?></td>
+        <td><?php echo Form::text('actai1',null,['class'=>'form-control','placeholder'=>'Acta Inicial']); ?></td>
+        <td><?php echo Form::number('valor',null,['class'=>'form-control','placeholder'=>'valor']); ?></td></td>        
+        <td><?php echo Form::date('valor',null,['class'=>'form-control','placeholder'=>'fecha de firma']); ?></td>
+        <td><?php echo Form::file('actai2'); ?></td>
+      </tr>
+    </tbody>
+  </table>
+	</div>
+	<div class="col-sm-12 text-center">	
+		<?php echo Form::submit('SIGUIENTE',['class'=>'btn btn-primary']); ?>		 
+	</div>	
+	<?php echo Form::close(); ?>		 
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layout.principal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
