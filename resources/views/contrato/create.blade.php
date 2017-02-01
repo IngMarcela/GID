@@ -10,7 +10,7 @@ AGREGAR CONTRATO
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de caja -->
 				{!!Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
-				<div class="col-xs-2"><!-- Fcaja de texto -->	
+				<div class="col-xs-3"><!-- Fcaja de texto -->	
 					{!!Form::text('caja',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
 				</div>	
 			</div>    	
@@ -20,7 +20,7 @@ AGREGAR CONTRATO
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
 				{!!Form::label('Carpeta', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-				<div class="col-xs-2"><!-- caja de texto -->	
+				<div class="col-xs-3"><!-- caja de texto -->	
 					{!!Form::text('carpeta',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
 				</div>	
 			</div>
@@ -30,7 +30,7 @@ AGREGAR CONTRATO
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de No contrato -->
 				{!!Form::label('No Contrato', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-				<div class="col-xs-2"><!-- caja de texto -->	
+				<div class="col-xs-3"><!-- caja de texto -->	
 					{!!Form::text('numco',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
 				</div>	
 			</div>
@@ -40,7 +40,7 @@ AGREGAR CONTRATO
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- estado del contrato -->
 				{!!Form::label('Estado del Contrato', null, array('class' => 'control-label col-xs-3'))!!}
-				<div class="col-xs-2"><!-- opciones en el valor del estado del contrato -->
+				<div class="col-xs-3"><!-- opciones en el valor del estado del contrato -->
 					{!!Form::select('estco',['Ejectado', 'No ejecutado'],null,['class' => 'form-control','id' => 'estado'])!!}
 				</div>	
 			</div>
@@ -50,7 +50,7 @@ AGREGAR CONTRATO
     	<div class="col-sm-6 portfolio-item branded logos">
 			<div class="form-group"><!-- label del tipo de contrto -->
 				{!!Form::label('Tipo de Contrato', null, array('class' => 'control-label col-xs-3'))!!}
-				<div class="col-xs-2"><!-- seleccion de opcuon del tipo de contrato -->
+				<div class="col-xs-3"><!-- seleccion de opcuon del tipo de contrato -->
 					{!!Form::select('tipco',['Obra','Suministro','Civil','prestacion de servicio'],null,['class' => 'form-control'])!!}
 				</div>	
 			</div>	
@@ -66,14 +66,16 @@ AGREGAR CONTRATO
 			</div>	
     	</div>
     </div>	 
-	<div class="col-sm-12 text-center">	 
-		<div class="form-group"><!-- label del objeto -->
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+			<div class="form-group"><!-- label del objeto -->
 			{!!Form::label('Objeto',null, array('class' => 'control-label col-xs-3'))!!}
-			<div class="col-xs-7"><!-- caja de texto, pero con gran espacio -->
+			<div class="col-xs-3"><!-- caja de texto, pero con gran espacio -->
 				{!!Form::textarea('objet',null,['class'=>'form-control','placeholder'=>'Ingresa el Objeto del Contrato','size' => '20x5'])!!}
 			</div>
-		</div>	
-	</div>    
+			</div>	
+    	</div>
+    </div>	    
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
 			<div class="form-group"><!-- label de Departamento -->
@@ -97,9 +99,9 @@ AGREGAR CONTRATO
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
 			<div class="form-group"><!-- valor en que se firmo el contrato -->
-				{!!Form::label('Valor Total',null, array('class' => 'control-label col-xs-3'))!!}
+				{!!Form::label('Valor Presupuestado',null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- caja de texto -->
-					{!!Form::number('valto',null,['class'=>'form-control','placeholder'=>'Ingresa el valor total'])!!}
+					{!!Form::number('valpr',null,['class'=>'form-control','placeholder'=>'Ingresa el valor total'])!!}
 				</div>
 			</div>	
     	</div>
@@ -128,7 +130,7 @@ AGREGAR CONTRATO
     	<div class="col-sm-6 portfolio-item branded logos">
 			<div class="form-group"><!-- label del tipo de contratante -->
 				{!!Form::label('Tipo de contratante', null, array('class' => 'control-label col-xs-3'))!!}
-				<div class="col-xs-2"><!-- Fseleccionar el tipo de contratante -->
+				<div class="col-xs-3"><!-- Fseleccionar el tipo de contratante -->
 					{!!Form::select('tipte',['Publico', 'Privado'],null,['class' => 'form-control'])!!}
 				</div>	
 			</div>
@@ -147,25 +149,28 @@ AGREGAR CONTRATO
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- la opcion del rut -->
-				{!!Form::label('RUT', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-				<div class="col-xs-2"><!-- caja de texto -->	
-					{!!Form::text('rut',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+				{!!Form::label('RUP', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
+				<div class="col-xs-3"><!-- caja de texto -->	
+					{!!Form::text('rup',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
 				</div>	
 			</div>
     	</div>
     </div>
-	<div class="col-sm-12 text-center">	 
-		<div class="form-group"><!-- comentario -->
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group">><!-- comentario -->
 			{!!Form::label('Comentario',null, array('class' => 'control-label col-xs-3'))!!}
-			<div class="col-xs-7"><!-- Caja de texto -->
+			<div class="col-xs-3"><!-- Caja de texto -->
 				{!!Form::textarea('comen',null,['class'=>'form-control','placeholder'=>'Ingresa los comentarios del proyecto','size' => '30x5'])!!}
+			</div>	
 			</div>
-		</div>
-	</div>
-	<div class="col-sm-12 text-center">	
+    	</div>
+    </div>
+    @section('boton')
+	<div class="timeline-date text-center">	
 		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
 	</div>
-
+	@stop
 	{!!Form::close()!!}	
 @stop
 

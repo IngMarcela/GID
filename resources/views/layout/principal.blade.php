@@ -35,16 +35,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
-
-                    
+                    </button>                    
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">HOME</a></li>
-                        <li class="dropdown"><a href="#">CONTRATOS</a></li>                    
-                        <li class="dropdown"><a href="#">LICITACIONES</a></li>
-                        <li class="dropdown"><a href="#">DOCUMENTOS </a></li>                      
+                        <li class="dropdown"><a href="contratos">CONTRATOS</a></li>                    
+                        <li class="dropdown"><a href="otrosis">OTROSI</a></li>
+                        <li class="dropdown"><a href="documentos">DOCUMENTOS </a></li>            
                     </ul>
                 </div>
 
@@ -77,6 +75,7 @@
             <div class="row">
             		@yield('content') 
             </div>
+            @yield('boton')
         </div>
     </section>
     <!--/#team-->
