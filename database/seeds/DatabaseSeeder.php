@@ -13,8 +13,15 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
-
+		// definimos el orden en el que se cargaran los registros a la base de datos
 		// $this->call('UserTableSeeder');
+		$this->call('EstadosTableSeeder');
+		$this->call('DepartamentosTableSeeder');
+		$this->call('MunicipiosCapitalesTableSeeder');
+		$this->call('MunicipiosCaucaTableSeeder');
+		$this->call('MunicipiosNarinoTableSeeder');
+		$this->call('MunicipiosValledelCaucaTableSeeder');
+		$this->call('VeredasTableSeeder');
 	}
 
 }
