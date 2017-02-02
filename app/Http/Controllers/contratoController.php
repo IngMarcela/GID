@@ -3,6 +3,11 @@
 use GID\Http\Requests;
 use GID\Http\Controllers\Controller;
 
+// importacion de los modelos que seran utilizados para manipular los datos dentro de la base de datos
+use GID\Departamento;
+use GID\Municipio;
+use GID\Estado;
+
 use Illuminate\Http\Request;
 
 class contratoController extends Controller {
@@ -14,7 +19,7 @@ class contratoController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		
 	}
 
 	/**
@@ -24,8 +29,25 @@ class contratoController extends Controller {
 	 */
 	public function create()
 	{
-		return view('contrato.create');
+		// carga los registros almacenados en la base de datos para las correspondientes tablas a las
+		// que hacen referencia los modelos
+		$departamentos = Departamento::lists('nom_departamento','id');
+		$estados = Estado::lists('estado','id');
+		// renderiza la vista y le envia los registros 
+		return view('contrato.create',compact('departamentos','municipios','veredas','estados'));
 	}
+
+
+	public function getMunicipios(Request $request, $id){
+		// valida si la peticion se realizo mediante ajax	
+		if($request->ajax()){
+			// invoca el metodo municipios() perteneciente al modelo Municipio
+			$municipios = Municipio::municipios($id);
+			// envia la respuesta mediante un tipo json
+			return response()->json($municipios);
+		}
+	}
+
 
 	/**
 	 * Store a newly created resource in storage.

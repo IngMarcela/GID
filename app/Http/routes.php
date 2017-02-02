@@ -23,4 +23,9 @@ Route::get('archivos','contratoController@archivos');
 Route::get('buscar','contratoController@buscar');
 //certificacion de contrato
 Route::get('certificacion','contratoController@certificacion');
+
+
+
 Route::resource('contrato','ContratoController');
+// recibe un id de un departamento con el cual se hallara los municipios asociados
+Route::get('municipio/{id}','ContratoController@getMunicipios');

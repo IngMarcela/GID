@@ -41,7 +41,8 @@ AGREGAR CONTRATO
     		<div class="form-group"><!-- estado del contrato -->
 				{!!Form::label('Estado del Contrato', null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- opciones en el valor del estado del contrato -->
-					{!!Form::select('estco',['Ejectado', 'No ejecutado'],null,['class' => 'form-control','id' => 'estado'])!!}
+					<!-- variable $estados es enviada desde el controlador ContratoController@create -->
+					{!!Form::select('estco',$estados,null,['class' => 'form-control','id' => 'estado'])!!}
 				</div>	
 			</div>
     	</div>
@@ -81,7 +82,8 @@ AGREGAR CONTRATO
 			<div class="form-group"><!-- label de Departamento -->
 				{!!Form::label('Departamento',null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- caja de texto -->
-					{!!Form::text('depar',null,['class'=>'form-control','placeholder'=>'Ingresa el Departamento'])!!}
+					<!-- variable $departamentos es enviada desde el controlador ContratoController@create -->
+					{!!Form::select('depar',$departamentos,null,['class' => 'form-control','id' => 'departamento'])!!}
 				</div>	
 			</div>	
     	</div>
@@ -91,7 +93,8 @@ AGREGAR CONTRATO
 			<div class="form-group"><!-- Municipio -->
 				{!!Form::label('Municipio/Vereda',null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- caja de texto -->
-					{!!Form::text('munve',null,['class'=>'form-control','placeholder'=>'Ingresa el Departamento'])!!}
+					{!!Form::select('munve',['No disponible'],null,['class' => 'form-control','id' => 'municipio'])!!}
+					
 				</div>
 			</div>	
     	</div>

@@ -6,9 +6,6 @@
     <meta name="author" content="">
     <title>HOME | SID</title>
     {!!Html::style('css/bootstrap.min.css')!!}
-    {!!Html::style('css/font-awesome.min.css')!!}
-    {!!Html::style('css/lightbox.css')!!}
-    {!!Html::style('css/animate.min.css')!!}
     {!!Html::style('css/main.css')!!}
     {!!Html::style('css/responsive.css')!!}
 	
@@ -91,12 +88,11 @@
     </footer>
     <!--/#footer-->
     
-    {!!Html::script('js/jquery.js')!!}
+    {!!Html::script('js/jquery.min.js')!!}
     {!!Html::script('js/bootstrap.min.js')!!}
-    {!!Html::script('js/lightbox.min.js')!!}
-    {!!Html::script('js/wow.min.js')!!}
-    {!!Html::script('js/jquery.countTo.js')!!}
-    {!!Html::script('js/main.js')!!}
+    
+    <!--select dinamicos-->
+    {!!Html::script('js/dropdown.js')!!}
 
     
     
