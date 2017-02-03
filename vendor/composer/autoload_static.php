@@ -249,6 +249,7 @@ class ComposerStaticInitc27db22e595d1f0b8c96ebb20bed0103
     );
 
     public static $classMap = array (
+        'ContratistasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ContratistasTableSeeder.php',
         'CreateCajasTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_230959_create_cajas_table.php',
         'CreateCarpetasTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_230942_create_carpetas_table.php',
         'CreateContratantesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_183319_create_contratantes_table.php',
@@ -711,6 +712,8 @@ class ComposerStaticInitc27db22e595d1f0b8c96ebb20bed0103
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'TipoContratantesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TipoContratantesTableSeeder.php',
+        'TipoContratosTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TipoCotratosTableSeeder.php',
         'VeredasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/VeredasTableSeeder.php',
     );
 

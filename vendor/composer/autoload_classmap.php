@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ContratistasTableSeeder' => $baseDir . '/database/seeds/ContratistasTableSeeder.php',
     'CreateCajasTable' => $baseDir . '/database/migrations/2017_01_18_230959_create_cajas_table.php',
     'CreateCarpetasTable' => $baseDir . '/database/migrations/2017_01_18_230942_create_carpetas_table.php',
     'CreateContratantesTable' => $baseDir . '/database/migrations/2017_01_31_183319_create_contratantes_table.php',
@@ -468,5 +469,7 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'TipoContratantesTableSeeder' => $baseDir . '/database/seeds/TipoContratantesTableSeeder.php',
+    'TipoContratosTableSeeder' => $baseDir . '/database/seeds/TipoCotratosTableSeeder.php',
     'VeredasTableSeeder' => $baseDir . '/database/seeds/VeredasTableSeeder.php',
 );
