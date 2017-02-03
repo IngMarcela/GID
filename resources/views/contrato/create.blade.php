@@ -52,7 +52,8 @@ AGREGAR CONTRATO
 			<div class="form-group"><!-- label del tipo de contrto -->
 				{!!Form::label('Tipo de Contrato', null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- seleccion de opcuon del tipo de contrato -->
-					{!!Form::select('tipco',['Obra','Suministro','Civil','prestacion de servicio'],null,['class' => 'form-control'])!!}
+					<!-- variable $tipo_contratos es enviada desde el controlador ContratoController@create -->
+					{!!Form::select('tipco',$tipo_contratos,null,['class' => 'form-control'])!!}
 				</div>	
 			</div>	
     	</div>
@@ -134,7 +135,8 @@ AGREGAR CONTRATO
 			<div class="form-group"><!-- label del tipo de contratante -->
 				{!!Form::label('Tipo de contratante', null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- Fseleccionar el tipo de contratante -->
-					{!!Form::select('tipte',['Publico', 'Privado'],null,['class' => 'form-control'])!!}
+					<!-- variable $tipo_contratantes es enviada desde el controlador ContratoController@create -->
+					{!!Form::select('tipte',$tipo_contratantes,null,['class' => 'form-control'])!!}
 				</div>	
 			</div>
     	</div>
@@ -144,7 +146,8 @@ AGREGAR CONTRATO
 			<div class="form-group"><!-- label de contratista -->
 				{!!Form::label('Contratista',null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- Opciones del contratista -->
-					{!!Form::select('conas', ['Electrosistemas del Cauca/IDJ','Terceros'],null,['class' => 'form-control'])!!}
+					<!-- variable $contratistas es enviada desde el controlador ContratoController@create -->
+					{!!Form::select('conas',$contratistas,null,['class' => 'form-control'])!!}
 				</div>
 			</div>	
     	</div>

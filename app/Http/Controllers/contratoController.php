@@ -7,6 +7,10 @@ use GID\Http\Controllers\Controller;
 use GID\Departamento;
 use GID\Municipio;
 use GID\Estado;
+use GID\Contratista;
+use GID\TipoContratante;
+use GID\TipoContrato;
+
 
 use Illuminate\Http\Request;
 
@@ -33,8 +37,11 @@ class contratoController extends Controller {
 		// que hacen referencia los modelos
 		$departamentos = Departamento::lists('nom_departamento','id');
 		$estados = Estado::lists('estado','id');
+		$contratistas = Contratista::lists('contratista','id');
+		$tipo_contratantes = TipoContratante::lists('tipo_contratante','id');
+		$tipo_contratos = TipoContrato::lists('tipo_contrato','id');
 		// renderiza la vista y le envia los registros 
-		return view('contrato.create',compact('departamentos','municipios','veredas','estados'));
+		return view('contrato.create',compact('departamentos','estados','contratistas','tipo_contratantes','tipo_contratos'));
 	}
 
 
