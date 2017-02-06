@@ -109,10 +109,9 @@ AGREGAR CONTRATO
 				<?php echo Form::label('Municipio/Vereda',null, array('class' => 'control-label col-xs-3')); ?>
 
 				<div class="col-xs-3"><!-- caja de texto -->
-					<?php echo Form::select('munve',['No disponible'],null,['class' => 'form-control','id' => 'municipio']); ?>
-
+					<?php echo Form::select('munve',['Selecciona'] ,null,['class' => 'form-control','id' => 'municipio']); ?></h2>
+				</div>				
 					
-				</div>
 			</div>	
     	</div>
     </div>     
@@ -201,12 +200,34 @@ AGREGAR CONTRATO
 			</div>
     	</div>
     </div>
+    <h2><a href="javascript:openVentana();">otros</a></h2>
     <?php $__env->startSection('boton'); ?>
 	<div class="timeline-date text-center">	
 		<?php echo Form::submit('GUARDAR',['class'=>'btn btn-primary']); ?>		 
 	</div>
 	<?php $__env->stopSection(); ?>
 	<?php echo Form::close(); ?>	
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('modal'); ?>
+	<div class=ventana><!-- ventana modal, que se despliega para agregar la opcion de agregar otra vereda o municipio -->
+		<?php echo Form::open(['url'=>'actainicial']); ?>
+
+		<div class="formu">
+		<div class="cerrar"><a href="javascript:closeVentana();">Cerrar X</a></div>
+			<div class="form-group"><!-- label de diferente vereda o monicipio -->
+				<?php echo Form::label('Vereda', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>
+
+				<div class="col-xs-3"><!-- caja de texto -->	
+					<?php echo Form::text('Vereda',null,['class'=>'form-control','placeholder'=>'Vereda']); ?>
+
+				</div>	
+				<div class="timeline-date text-center">	
+					<?php echo Form::submit('GUARDAR',['class'=>'btn btn-primary']); ?>		 
+				</div>
+			</div>
+		</div>
+		<?php echo Form::close(); ?>	
+	</div>
 <?php $__env->stopSection(); ?>
 
 

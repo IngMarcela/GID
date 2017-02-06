@@ -94,9 +94,9 @@ AGREGAR CONTRATO
 			<div class="form-group"><!-- Municipio -->
 				{!!Form::label('Municipio/Vereda',null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- caja de texto -->
-					{!!Form::select('munve',['No disponible'],null,['class' => 'form-control','id' => 'municipio'])!!}
+					{!!Form::select('munve',['Selecciona'] ,null,['class' => 'form-control','id' => 'municipio'])!!}</h2>
+				</div>				
 					
-				</div>
 			</div>	
     	</div>
     </div>     
@@ -172,11 +172,30 @@ AGREGAR CONTRATO
 			</div>
     	</div>
     </div>
+    <h2><a href="javascript:openVentana();">otros</a></h2>
     @section('boton')
 	<div class="timeline-date text-center">	
 		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
 	</div>
 	@stop
 	{!!Form::close()!!}	
+@stop
+@Section('modal')
+	<div class=ventana><!-- ventana modal, que se despliega para agregar la opcion de agregar otra vereda o municipio -->
+		{!!Form::open(['url'=>'actainicial'])!!}
+		<div class="formu">
+		<div class="cerrar"><a href="javascript:closeVentana();">Cerrar X</a></div>
+			<div class="form-group"><!-- label de diferente vereda o monicipio -->
+				{!!Form::label('Vereda', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
+				<div class="col-xs-3"><!-- caja de texto -->	
+					{!!Form::text('Vereda',null,['class'=>'form-control','placeholder'=>'Vereda'])!!}
+				</div>	
+				<div class="timeline-date text-center">	
+					{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
+				</div>
+			</div>
+		</div>
+		{!!Form::close()!!}	
+	</div>
 @stop
 
