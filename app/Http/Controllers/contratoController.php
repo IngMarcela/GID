@@ -11,10 +11,21 @@ use GID\Contratista;
 use GID\TipoContratante;
 use GID\TipoContrato;
 
+// importacion de los request que seran utilizados para la validacion de los datos que se envian desde
+// los formularios
+
+use GID\Http\Requests\ContratoCrearRequest;
+
+// csrf token
+use Session;
+
+// redireccionar a otras vistas
+use Redirect;
+
 
 use Illuminate\Http\Request;
 
-class contratoController extends Controller {
+class ContratoController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -61,9 +72,29 @@ class contratoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ContratoCrearRequest $request)
 	{
 		//
+		\GID\Contrato::create([
+			'num_contrato' => $request['No_Contrato'],
+			'id_vereda' => $request['Muninicipio_o_Vereda'],
+			'id_municipio' => $request['Muninicipio_o_Vereda'],
+			'id_departamento' => $request['Departamento'],
+			'id_cuerpo' => $request['Objeto'],// ojo esto no va aqui
+			'valor_presupuestado' => $request['Valor_Presupuestado'],
+			'valor_ejecutado' => $request['Valor_Ejecutado'],
+			'id_estado' => $request['Estado_del_Contrato'],
+			'id_caja' => $request['Caja'],
+			'id_carpeta' => $request['Carpeta'],
+			'fecha_inicio' => $request['Fecha_de_Inicio'],
+			'rup' => $request['RUP'],
+			'comentario' => $request['Comentario'],
+			'id_tipo_contrato' => $request['Tipo_de_Contrato'],
+			'id_contratante' => $request['Tipo_de_Contratante'],
+			'id_tipo_contratante' => $request['Contratante'],
+			'id_contratista' => $request['Contratista'],
+		]);
+		return "contrato almacenado";
 	}
 
 	/**
@@ -75,6 +106,7 @@ class contratoController extends Controller {
 	public function show($id)
 	{
 		//
+		
 	}
 
 	/**
