@@ -3,24 +3,12 @@
 @section('asig')
 AGREGAR CONTRATO
 @stop
-
 @section('content')
 <!-- templete request.blade.php se utiliza para mostrar mensajes de retroalimentacion al usuario-->
 @include('alertas.request')
 <!-- formulario -->
 	{!!Form::open(['route' => 'contrato.store','method' => 'POST'])!!}
-	
 	<div class = "form-horizontal">
-		<div class="portfolio-items">
-	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group"><!-- label de carpeta -->
-					{!!Form::label('',null, array('class' => 'control-label col-xs-3'))!!}
-					<div class="col-xs-3"><!-- caja de texto -->	
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					</div>	
-				</div>
-	    	</div>
-	    </div>
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de caja -->
@@ -109,9 +97,9 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- Municipio -->
 					{!!Form::label('Municipio/Vereda',null, array('class' => 'control-label col-xs-3'))!!}
 					<div class="col-xs-3"><!-- caja de texto -->
-						{!!Form::select('Municipio_o_Verereda',['No disponible'],null,['class' => 'form-control','id' => 'municipio'])!!}
+						{!!Form::select('Municipio_o_Vereda',['Selecciona'] ,null,['class' => 'form-control','id' => 'municipio'])!!}</h2>
+					</div>				
 						
-					</div>
 				</div>	
 	    	</div>
 	    </div>     
@@ -128,7 +116,7 @@ AGREGAR CONTRATO
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- valor en que se finalizo -->
-					{!!Form::label('Valor ejecutada',null, array('class' => 'control-label col-xs-3'))!!}
+					{!!Form::label('Valor ejecutado',null, array('class' => 'control-label col-xs-3'))!!}
 					<div class="col-xs-3"><!-- caja de texto -->
 						{!!Form::number('Valor_Ejecutado',null,['class'=>'form-control','placeholder'=>'Ingresa el valor ejecutada'])!!}
 					</div>
@@ -187,13 +175,40 @@ AGREGAR CONTRATO
 				</div>
 	    	</div>
 	    </div>
-	   
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group">
+					{!!Form::label('',null, array('class' => 'control-label col-xs-3'))!!}
+					<div class="col-xs-3">	
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					</div>	
+				</div>
+	    	</div>
+	    </div>
+	    <h2><a href="javascript:openVentana();">Otros</a></h2>
+	    
 		<div class="timeline-date text-center">	
 			{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
 		</div>
 		
 	</div>
-		
 	{!!Form::close()!!}	
 @stop
-
+@Section('modal')
+	<div class=ventana><!-- ventana modal, que se despliega para agregar la opcion de agregar otra vereda o municipio -->
+		{!!Form::open(['url'=>'actainicial'])!!}
+		<div class="formu">
+		<div class="cerrar"><a href="javascript:closeVentana();">Cerrar X</a></div>
+			<div class="form-group"><!-- label de diferente vereda o monicipio -->
+				{!!Form::label('Vereda', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
+				<div class="col-xs-3"><!-- caja de texto -->	
+					{!!Form::text('Vereda',null,['class'=>'form-control','placeholder'=>'Vereda'])!!}
+				</div>	
+				<div class="timeline-date text-center">	
+					{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
+				</div>
+			</div>
+		</div>
+		{!!Form::close()!!}	
+	</div>
+@stop

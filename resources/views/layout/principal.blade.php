@@ -69,6 +69,8 @@
    
     <section id="team">
         <div class="container">
+    <!-- hace el llamado a la ventana emergente -->           
+           @yield('modal')
             <div class="row">
             		@yield('content') 
             </div>
@@ -93,6 +95,9 @@
     
     <!--select dinamicos-->
     {!!Html::script('js/dropdown.js')!!}
+    
+    <!--vntana modal-->
+    {!!Html::script('js/funcion.js')!!}
 
     
     

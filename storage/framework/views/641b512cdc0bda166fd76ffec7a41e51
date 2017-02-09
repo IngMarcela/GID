@@ -72,6 +72,8 @@
    
     <section id="team">
         <div class="container">
+    <!-- hace el llamado a la ventana emergente -->           
+           <?php echo $__env->yieldContent('modal'); ?>
             <div class="row">
             		<?php echo $__env->yieldContent('content'); ?> 
             </div>
@@ -98,6 +100,10 @@
     
     <!--select dinamicos-->
     <?php echo Html::script('js/dropdown.js'); ?>
+
+    
+    <!--vntana modal-->
+    <?php echo Html::script('js/funcion.js'); ?>
 
 
     
