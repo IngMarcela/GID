@@ -6,15 +6,41 @@ AGREGAR CONTRATO
 @section('content')
 <!-- templete request.blade.php se utiliza para mostrar mensajes de retroalimentacion al usuario-->
 @include('alertas.request')
+
+@include('alertas.confirmacion')
+
+
 <!-- formulario -->
 	{!!Form::open(['route' => 'contrato.store','method' => 'POST'])!!}
 	<div class = "form-horizontal">
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group">
+					{!!Form::label('',null, array('class' => 'control-label col-xs-3'))!!}
+					<div class="col-xs-3">	
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					</div>	
+				</div>
+	    	</div>
+	    </div>
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group"><!-- label de caja -->
+					{!!Form::label('Estante', null, array('class' => 'control-label col-xs-3','id' => 'estante'))!!}
+					<div class="col-xs-3"><!-- opciones en el valor de estantes -->
+						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
+						{!!Form::select('Estante',$estantes ,2,['class' => 'form-control','id' => 'estante','onchange' => 'ventana(this.value,"estantes");',])!!}</h2>
+					</div>	
+				</div>    	
+	    	</div>
+	    </div>   
+		<div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de caja -->
 					{!!Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
-					<div class="col-xs-3"><!-- Fcaja de texto -->	
-						{!!Form::text('Caja',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+					<div class="col-xs-3"><!-- opciones en el valor de cajas -->
+						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
+						{!!Form::select('Caja',$cajas ,2,['class' => 'form-control','id' => 'caja','onchange' => 'ventana(this.value,"cajas");',])!!}</h2>
 					</div>	
 				</div>    	
 	    	</div>
@@ -23,8 +49,9 @@ AGREGAR CONTRATO
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de carpeta -->
 					{!!Form::label('Carpeta', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-					<div class="col-xs-3"><!-- caja de texto -->	
-						{!!Form::text('Carpeta',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
+						{!!Form::select('Carpeta',$carpetas ,2,['class' => 'form-control','id' => 'carpeta','onchange' => 'ventana(this.value,"carpetas");',])!!}</h2>
 					</div>	
 				</div>
 	    	</div>
@@ -85,7 +112,7 @@ AGREGAR CONTRATO
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- label de Departamento -->
 					{!!Form::label('Departamento',null, array('class' => 'control-label col-xs-3'))!!}
-					<div class="col-xs-3"><!-- caja de texto -->
+					<div class="col-xs-3"><!--  -->
 						<!-- variable $departamentos es enviada desde el controlador ContratoController@create -->
 						{!!Form::select('Departamento',$departamentos,null,['class' => 'form-control','id' => 'departamento'])!!}
 					</div>	
@@ -95,14 +122,25 @@ AGREGAR CONTRATO
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- Municipio -->
-					{!!Form::label('Municipio/Vereda',null, array('class' => 'control-label col-xs-3'))!!}
-					<div class="col-xs-3"><!-- caja de texto -->
-						{!!Form::select('Municipio_o_Vereda',['Selecciona'] ,null,['class' => 'form-control','id' => 'municipio'])!!}</h2>
+					{!!Form::label('Municipio',null, array('class' => 'control-label col-xs-3'))!!}
+					<div class="col-xs-3"><!--  -->
+						{!!Form::select('Municipio',['1' => 'Selecciona'],1,['class' => 'form-control','id' => 'municipio','onchange' => 'ventana(this.value,"municipios");',])!!}</h2>
 					</div>				
 						
 				</div>	
 	    	</div>
-	    </div>     
+	    </div>
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+				<div class="form-group"><!-- vereda -->
+					{!!Form::label('Vereda',null, array('class' => 'control-label col-xs-3'))!!}
+					<div class="col-xs-3"><!--  -->
+						{!!Form::select('Vereda',['1' => 'Selecciona'],1,['class' => 'form-control','id' => 'vereda','onchange' => 'ventana(this.value,"veredas");',])!!}</h2>
+					</div>				
+						
+				</div>	
+	    	</div>
+	    </div>         
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- valor en que se firmo el contrato -->
@@ -150,7 +188,7 @@ AGREGAR CONTRATO
 					{!!Form::label('Contratista',null, array('class' => 'control-label col-xs-3'))!!}
 					<div class="col-xs-3"><!-- Opciones del contratista -->
 						<!-- variable $contratistas es enviada desde el controlador ContratoController@create -->
-						{!!Form::select('Contratista',$contratistas,null,['class' => 'form-control'])!!}
+						{!!Form::select('Contratista',$contratistas,2,['class' => 'form-control','id' => 'contratista'])!!}
 					</div>
 				</div>	
 	    	</div>
@@ -160,7 +198,7 @@ AGREGAR CONTRATO
 	    		<div class="form-group"><!-- la opcion del rut -->
 					{!!Form::label('RUP', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
 					<div class="col-xs-3"><!-- caja de texto -->	
-						{!!Form::text('RUP',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+						{!!Form::text('RUP',null,['class'=>'form-control','id' => 'rup','placeholder'=>'No de contrato'])!!}
 					</div>	
 				</div>
 	    	</div>
@@ -175,17 +213,6 @@ AGREGAR CONTRATO
 				</div>
 	    	</div>
 	    </div>
-	    <div class="portfolio-items">
-	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group">
-					{!!Form::label('',null, array('class' => 'control-label col-xs-3'))!!}
-					<div class="col-xs-3">	
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					</div>	
-				</div>
-	    	</div>
-	    </div>
-	    <h2><a href="javascript:openVentana();">Otros</a></h2>
 	    
 		<div class="timeline-date text-center">	
 			{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
@@ -193,22 +220,18 @@ AGREGAR CONTRATO
 		
 	</div>
 	{!!Form::close()!!}	
+	
+	
+	@include('ventanas_modales.estante')
+	@include('ventanas_modales.caja')
+	@include('ventanas_modales.carpeta')
+	@include('ventanas_modales.municipio')
+	@include('ventanas_modales.vereda')
+	
+	
 @stop
-@Section('modal')
-	<div class=ventana><!-- ventana modal, que se despliega para agregar la opcion de agregar otra vereda o municipio -->
-		{!!Form::open(['url'=>'actainicial'])!!}
-		<div class="formu">
-		<div class="cerrar"><a href="javascript:closeVentana();">Cerrar X</a></div>
-			<div class="form-group"><!-- label de diferente vereda o monicipio -->
-				{!!Form::label('Vereda', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('Vereda',null,['class'=>'form-control','placeholder'=>'Vereda'])!!}
-				</div>	
-				<div class="timeline-date text-center">	
-					{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
-				</div>
-			</div>
-		</div>
-		{!!Form::close()!!}	
-	</div>
-@stop
+
+
+
+	
+

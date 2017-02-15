@@ -101,9 +101,13 @@
     <!--select dinamicos-->
     <?php echo Html::script('js/dropdown.js'); ?>
 
+    <?php echo Html::script('js/cargarRUP.js'); ?>
+
     
-    <!--vntana modal-->
+    <!--ventana modal-->
     <?php echo Html::script('js/funcion.js'); ?>
+
+    <?php echo Html::script('js/guardarCaja.js'); ?>
 
 
     

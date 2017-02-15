@@ -18,6 +18,7 @@ class CreateTipoContratantesTable extends Migration {
 			$table->increments('id');
 			$table->string('tipo_contratante',60)->unique();
 			$table->timestamps();
+			
 		});
 	}
 

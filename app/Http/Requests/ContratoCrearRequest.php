@@ -23,22 +23,34 @@ class ContratoCrearRequest extends Request {
 	{
 		return [
 			'No_Contrato' 			=>	'required|max:50|unique:contratos,num_contrato',
-			'Muninicipio_o_Vereda'  =>	'numeric|min:1',
+			'Municipio_o_Vereda'  =>	'numeric|min:1',
 			'Departamento'			=>	'required|numeric|min:1',
-			'Objeto'				=>	'required|max:50|alpha_num',
-			'Valor_Presupuestado'	=>	'required|numeric|min:0',
-			'Valor_Ejecutado' 		=>	'required|numeric|min:0',
+			'Objeto'				=>	'required|max:950|string',
+			'Valor_Presupuestado'	=>	'required|numeric|min:100000',
+			'Valor_Ejecutado' 		=>	'required|numeric|min:100000',
 			'Estado_del_Contrato'	=>	'required|min:1',
-			'Caja' 					=>	'required|numeric',
-			'Carpeta'				=>	'required|numeric',
+			'Estante'				=>	'required|numeric|min:2',
+			'Caja' 					=>	'required|numeric|min:2',
+			'Carpeta'				=>	'required|numeric|min:2',
 			'Fecha_de_Inicio' 		=>	'required|date',
 			'RUP' 					=>	'required|numeric',
-			'Comentario' 			=>	'alpha_num|max:240',
+			'Comentario' 			=>	'string|max:240',
 			'Tipo_de_Contrato'		=>	'required|numeric|min:1',
 			'Tipo_de_Contratante'	=>	'required|numeric|min:1',
-			'Contratante'			=>	'required|alpha_num',
+			'Contratante'			=>	'required|string',
 			'Contratista'			=>	'required|numeric|min:1',
 		];
 	}
+	
+	public function messages()
+    {
+        return [
+            'Estante.min'   	 	=> 'El campo estante debe ser distinto a 0',
+            'Caja.min'  	 	 	=> 'El campo caja debe ser distinto a 0',
+            'Carpeta.min'	 	 	=> 'El campo carpeta debe ser distinto a 0',
+            'Valor_Presupuestado'	=> 'El campo valor presupuestado debe ser como minimo de 100,000 a 0',
+            'Valor_Ejecutado'		=> 'El campo valor ejecutado debe ser como minimo de 100,000',
+        ];
+    }
 
 }

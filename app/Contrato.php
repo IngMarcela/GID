@@ -8,9 +8,9 @@ class Contrato extends Model {
 	protected $table = 'contratos';
 	
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable = ['num_contrato','id_vereda','id_municipio','id_departamento','id_cuerpo',
-	'valor_presupuestado','valor_ejecutado','id_estado','id_caja','id_carpeta','fecha_inicio','rup',
-	'comentario','id_tipo_contrato','id_contratante','id_tipo_contratante','id_contratista'];
+	protected $fillable = ['num_contrato','objeto','id_vereda','id_municipio','id_departamento',
+	'valor_presupuestado','valor_ejecutado','id_estado','id_estante','id_caja','id_carpeta','fecha_inicio',
+	'comentario','id_tipo_contrato','id_contratante','id_contratista'];
 	
 	
 	
@@ -44,9 +44,6 @@ class Contrato extends Model {
 	}
 	public function contratante(){
 		return $this->hasOne('GID\Contratante');
-	}
-	public function tipoContratante(){
-		return $this->hasOne('GID\TipoContratante');
 	}
 	public function contratista(){
 		return $this->hasOne('GID\Contratista');
