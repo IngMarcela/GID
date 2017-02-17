@@ -249,6 +249,8 @@ class ComposerStaticInitc27db22e595d1f0b8c96ebb20bed0103
     );
 
     public static $classMap = array (
+        'CajasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CajasTableSeeder.php',
+        'CarpetasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CarpetasTableSeeder.php',
         'ContratistasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ContratistasTableSeeder.php',
         'CreateActaFinalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_16_103559_create_acta_finals_table.php',
         'CreateActaInicialsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_16_103323_create_acta_inicials_table.php',
@@ -263,7 +265,6 @@ class ComposerStaticInitc27db22e595d1f0b8c96ebb20bed0103
         'CreateContratistasTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_183414_create_contratistas_table.php',
         'CreateContratoRupsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_16_103713_create_contrato_rups_table.php',
         'CreateContratosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_183513_create_contratos_table.php',
-        'CreateCuerposTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_231302_create_cuerpos_table.php',
         'CreateDepartamentosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_231245_create_departamentos_table.php',
         'CreateEstadosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_231152_create_estados_table.php',
         'CreateEstantesTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_16_103427_create_estantes_table.php',
@@ -271,7 +272,7 @@ class ComposerStaticInitc27db22e595d1f0b8c96ebb20bed0103
         'CreateLicitacionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_231415_create_licitacions_table.php',
         'CreateMunicipiosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_18_231250_create_municipios_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreateRupsTable' => __DIR__ . '/../..' . '/database/migrations/2017_02_16_103645_create_rups_table.php',
+        'CreateRUPsTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_183425_create_rups_table.php',
         'CreateTipoContratantesTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_183339_create_tipo_contratantes_table.php',
         'CreateTipoContratosTable' => __DIR__ . '/../..' . '/database/migrations/2017_01_31_183241_create_tipo_contratos_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -279,6 +280,7 @@ class ComposerStaticInitc27db22e595d1f0b8c96ebb20bed0103
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DepartamentosTableSeeder' => __DIR__ . '/../..' . '/database/seeds/DepartamentosTableSeeder.php',
         'EstadosTableSeeder' => __DIR__ . '/../..' . '/database/seeds/EstadosTableSeeder.php',
+        'EstantesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/EstantesTableSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',

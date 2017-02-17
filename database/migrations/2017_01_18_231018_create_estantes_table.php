@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCuerposTable extends Migration {
+class CreateEstantesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateCuerposTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('cuerpos', function(Blueprint $table)
+		Schema::create('estantes', function(Blueprint $table)
 		{
-			// columnas que cotendra la tabla cuerpos y el tipo de dato de estas
+			// columnas que cotendra la tabla estantes y el tipo de dato de estas
 			$table->increments('id');
-			$table->text('objeto',1000);
+			$table->tinyInteger('num_estante')->unsigned()->unique();
 			$table->timestamps();
 		});
 	}
@@ -28,7 +28,7 @@ class CreateCuerposTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('cuerpos');
+		Schema::drop('estantes');
 	}
 
 }

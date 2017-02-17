@@ -9,4 +9,5 @@ class Caja extends Model {
 	// campos a los cuales se le permitira que el usuario le asigne valores
 	protected $fillable = ['id_estante','id_cajas'];
 
+	protected $fillable = ['num_caja'];
 }

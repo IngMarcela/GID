@@ -17,7 +17,11 @@ class CreateContratantesTable extends Migration {
 			// columnas que cotendra la tabla contratantes y el tipo de dato de estas
 			$table->increments('id');
 			$table->string('contratante',60)->unique();
+			$table->integer('id_tipo_contratante')->unsigned();
 			$table->timestamps();
+			// columnas que cotendra la tabla tipocontratantes y el tipo de dato de estas
+			$table->foreign('id_tipo_contratante')->references('id')->on('tipocontratantes')->onUpdate('cascade');
+			
 		});
 	}
 

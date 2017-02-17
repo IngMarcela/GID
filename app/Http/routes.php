@@ -50,6 +50,17 @@ Route::get('hojas_vida','HojaDeVidaController@hoja_vida');
 Route::get('hoja_vidad','HojaDeVidaController@created');
 
 
-Route::get('createc','ContratoController@create');
+Route::resource('estante','EstanteController');
+Route::resource('caja','CajaController');
+Route::resource('carpeta','CarpetaController');
+
+Route::resource('municipio','MunicipioController');
+Route::resource('vereda','VeredaController');
+
+Route::resource('contrato','ContratoController');
+
 // recibe un id de un departamento con el cual se hallara los municipios asociados
 Route::get('municipio/{id}','ContratoController@getMunicipios');
+
+// recibe un id de un departamento con el cual se hallara el rup asociado
+Route::get('rup/{id}','ContratoController@getRup');

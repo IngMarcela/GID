@@ -95,9 +95,11 @@
     
     <!--select dinamicos-->
     {!!Html::script('js/dropdown.js')!!}
+    {!!Html::script('js/cargarRUP.js')!!}
     
-    <!--vntana modal-->
+    <!--ventana modal-->
     {!!Html::script('js/funcion.js')!!}
+    {!!Html::script('js/guardarCaja.js')!!}
 
    @yield('script')
     
