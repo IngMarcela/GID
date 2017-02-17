@@ -5,9 +5,9 @@ CONTRATOS
 @stop
 @section('content')
 <div class="col-sm-12 text-center">
-	{!!Form::submit('BUSCAR',['class' => 'btn btn-lg btn-primary','url'=>'contrato.archivos'])!!}
+	<input type="button" onclick=" location.href='contratos/create' " value="AGREGAR CONTRATO" class="btn btn-lg btn-primary" /> 
 </br>
 </br>
-	{!!Form::submit('AGREGAR',['class' => 'btn btn-lg btn-primary','url'=>'contrato.archivos'])!!}
+	<input type="button" onclick=" location.href='buscar' " value="BUSCAR CONTRATO" class="btn btn-lg btn-primary" /> 
 </div>
 @stop

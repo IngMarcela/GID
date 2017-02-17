@@ -11,6 +11,11 @@
 
     <?php echo Html::style('css/responsive.css'); ?>
 
+    
+    <?php echo Html::style('css/jquery.style.css'); ?>
+
+    <?php echo Html::style('css/jquery.fileupload.css'); ?>
+
 	
     
      <!--[if lt IE 9]>
@@ -74,10 +79,7 @@
         <div class="container">
     <!-- hace el llamado a la ventana emergente -->           
            <?php echo $__env->yieldContent('modal'); ?>
-            <div class="row">
-            		<?php echo $__env->yieldContent('content'); ?> 
-            </div>
-            <?php echo $__env->yieldContent('boton'); ?>
+            <?php echo $__env->yieldContent('content'); ?> 
         </div>
     </section>
     <!--/#team-->
@@ -106,6 +108,7 @@
     <?php echo Html::script('js/funcion.js'); ?>
 
 
+   <?php echo $__env->yieldContent('script'); ?>
     
     
     

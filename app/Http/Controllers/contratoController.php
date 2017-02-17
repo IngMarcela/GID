@@ -10,7 +10,8 @@ use GID\Estado;
 use GID\Contratista;
 use GID\TipoContratante;
 use GID\TipoContrato;
-
+use GID\User;
+use GID\Contrato;
 
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class contratoController extends Controller {
 	 */
 	public function index()
 	{
-		
+		return view('contrato.contratos');
 	}
 
 	/**
@@ -109,41 +110,27 @@ class contratoController extends Controller {
 	{
 		//
 	}
-	// llamado de las vistas del contrato 
-	//encontramos las opciones de agregar contrato y buscar contrato
-	public function contratos()
+	// llamado de las vistas de la busqueda
+	public function buscar(Request $request)
 	{
-		return view('contrato.contratos');
+		//creacion de la variable 
+		//hace referencia al namespace de la aplicación 
+		//dentro de la aplicacion referenciamos el modelo con el User 
+		//all traer todos los elementros que contiene los elementos del modelo User 
+		//paginate los divide en seccioness
+		$Contratos = Contrato::paginate(5);
+		//Retorna una vista donde se entuentra el usuario con su respectivo vista
+		//enviar información 
+		//compact, manera adecuada que en la vista contenga la informacion
+		//basado en la variable user 
+		//la informacion de encuentra en la vista
+		////////////////////////////////////////////////////////
+		//preguntamos si el Request
+		if($request->ajax()){
+			return response()->json(view('contrato.buscar',compact('Contratos'))->render());
+			
+				
+		}
+        return view('contrato.buscar',compact('Contratos'));
 	}
-	// llamado de las vistas del acta inicial
-	//la funcion de la presente acta es agregar los detalles conjunto con el pdf
-	public function actainicial()	
-	{
-		return view('contrato.actainicial');
-	}
-	// llamado de las vistas del acta parcial
-	//la funcion de la presente acta es agregar los detalles conjunto con el pdf
-	public function actaparcial()
-	{
-		return view('contrato.actaParcial');
-	}
-	// llamado de las vistas del acta final
-	//la funcion de la presente acta es agregar los detalles conjunto con el pdf
-	public function actafinal()
-	{
-		return view('contrato.actafinal');
-	}
-	// llamado de las vistas del archivo
-	//la funcion de la presente archivo es agregar los detalles conjunto con el pdf
-	public function archivos()
-	{
-		return view('contrato.archivos');
-	}
-	// llamado de las vistas de la certificacion
-	//la funcion de la presente archivo es agregar los detalles conjunto con el pdf
-	public function certificacion()
-	{
-		return view('contrato.certificacion');
-	}
-
 }

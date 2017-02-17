@@ -4,9 +4,23 @@ AGREGAR CONTRATO
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <!-- formulario -->
-	<?php echo Form::open(['class' => 'form-horizontal','url'=>'actainicial']); ?>
+	<?php echo Form::open(['class' => 'form-horizontal','url'=>'actainicial/create']); ?>
 
+	
+    <div class="row">
 	<div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de caja -->
+				<?php echo Form::label('Estanteria', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>
+
+				<div class="col-xs-3"><!-- Fcaja de texto -->	
+					<?php echo Form::text('estanteria',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+
+				</div>	
+			</div>    	
+    	</div>
+    </div>  	
+   	<div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de caja -->
 				<?php echo Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>
@@ -21,9 +35,20 @@ AGREGAR CONTRATO
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
-				<?php echo Form::label('Carpeta', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<?php echo Form::label('Folder', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
 				<div class="col-xs-3"><!-- caja de texto -->	
-					<?php echo Form::text('carpeta',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+					<?php echo Form::text('folder',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div>    
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de carpeta -->
+				<?php echo Form::label('Folios', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<div class="col-xs-3"><!-- caja de texto -->	
+					<?php echo Form::number('folios',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
 
 				</div>	
 			</div>
@@ -190,7 +215,7 @@ AGREGAR CONTRATO
     </div>
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group">><!-- comentario -->
+    		<div class="form-group"><!-- comentario -->
 			<?php echo Form::label('Comentario',null, array('class' => 'control-label col-xs-3')); ?>
 
 			<div class="col-xs-3"><!-- Caja de texto -->
@@ -200,12 +225,17 @@ AGREGAR CONTRATO
 			</div>
     	</div>
     </div>
-    <h2><a href="javascript:openVentana();">otros</a></h2>
-    <?php $__env->startSection('boton'); ?>
-	<div class="timeline-date text-center">	
-		<?php echo Form::submit('GUARDAR',['class'=>'btn btn-primary']); ?>		 
+    <h2><a href="javascript:openVentana()">otros</a></h2>
+    </div>
+    
+     <div class="col-sm-12 text-center"><!-- Caja de texto -->
+		<?php echo Form::submit('GUARDAR',['class'=>'btn btn-primary']); ?>
+
 	</div>
-	<?php $__env->stopSection(); ?>
+      			
+			
+    
+    
 	<?php echo Form::close(); ?>	
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('modal'); ?>

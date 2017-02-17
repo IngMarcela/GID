@@ -5,8 +5,20 @@ AGREGAR CONTRATO
 @stop
 @section('content')
 <!-- formulario -->
-	{!!Form::open(['class' => 'form-horizontal','url'=>'actainicial'])!!}
+	{!!Form::open(['class' => 'form-horizontal','url'=>'actainicial/create'])!!}
+	
+    <div class="row">
 	<div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de caja -->
+				{!!Form::label('Estanteria', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
+				<div class="col-xs-3"><!-- Fcaja de texto -->	
+					{!!Form::text('estanteria',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+				</div>	
+			</div>    	
+    	</div>
+    </div>  	
+   	<div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de caja -->
 				{!!Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
@@ -19,9 +31,19 @@ AGREGAR CONTRATO
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
-				{!!Form::label('Carpeta', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
+				{!!Form::label('Folder', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
 				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('carpeta',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+					{!!Form::text('folder',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
+				</div>	
+			</div>
+    	</div>
+    </div>    
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de carpeta -->
+				{!!Form::label('Folios', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
+				<div class="col-xs-3"><!-- caja de texto -->	
+					{!!Form::number('folios',null,['class'=>'form-control','placeholder'=>'No de contrato'])!!}
 				</div>	
 			</div>
     	</div>
@@ -164,7 +186,7 @@ AGREGAR CONTRATO
     </div>
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group">><!-- comentario -->
+    		<div class="form-group"><!-- comentario -->
 			{!!Form::label('Comentario',null, array('class' => 'control-label col-xs-3'))!!}
 			<div class="col-xs-3"><!-- Caja de texto -->
 				{!!Form::textarea('comen',null,['class'=>'form-control','placeholder'=>'Ingresa los comentarios del proyecto','size' => '30x5'])!!}
@@ -172,12 +194,16 @@ AGREGAR CONTRATO
 			</div>
     	</div>
     </div>
-    <h2><a href="javascript:openVentana();">otros</a></h2>
-    @section('boton')
-	<div class="timeline-date text-center">	
-		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
+    <h2><a href="javascript:openVentana()">otros</a></h2>
+    </div>
+    
+     <div class="col-sm-12 text-center"><!-- Caja de texto -->
+		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}
 	</div>
-	@stop
+      			
+			
+    
+    
 	{!!Form::close()!!}	
 @stop
 @Section('modal')
