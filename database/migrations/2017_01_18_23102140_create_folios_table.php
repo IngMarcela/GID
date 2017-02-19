@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVeredasTable extends Migration {
+class CreateFoliosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,15 @@ class CreateVeredasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('veredas', function(Blueprint $table)
+		Schema::create('folios', function(Blueprint $table)
 		{
-			// columnas que cotendra la tabla veredas y el tipo de dato de estas
 			$table->increments('id');
-			$table->integer('id_municipio')->unsigned();
-			$table->string('nom_vereda',60);
 			$table->timestamps();
+			$table->integer('id_carpeta')->unsigned();
+			$table->integer('num_folio')->unsigned();
+			
 			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
-			$table->foreign('id_municipio')->references('id')->on('municipios')->onUpdate('cascade');
+			$table->foreign('id_carpeta')->references('id')->on('carpetas')->onUpdate('cascade');
 		});
 	}
 
@@ -31,7 +31,7 @@ class CreateVeredasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('veredas');
+		Schema::drop('folios');
 	}
 
 }

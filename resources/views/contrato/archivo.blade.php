@@ -2,26 +2,16 @@
 @stop
 @section('asig')
 AGREGAR CONTRATO
-<p>FACTURA</p>
+<p>ARCHIVOS EXTRAS</p>
 @stop
-@section('act6')
+@section('act7')
 active
 @stop
 @section('content')
 @include('alertas.request')
-	{!!Form::open(['class' => 'form-horizontal','route' => 'factura.store','method' => 'POST'])!!}
+	{!!Form::open(['class' => 'form-horizontal','route' => 'archivo.store','method' => 'POST'])!!}
 	<div class="row">
  	<div class="pane">
- 	<div class="portfolio-items">
-    	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de carpeta -->
-				{!!Form::label('No Factura', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('entidad que certifica',null,['class'=>'form-control-3','placeholder'=>'No factura'])!!}
-				</div>	
-			</div>
-    	</div>
-    </div>
   	<div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
@@ -52,7 +42,11 @@ active
 					</div>	
 				</div>
 	    	</div>
-	    </div>	 	    
+	    </div>	 
+	</div>
+	</div>	
+    <div class="row">
+ 	<div class="pane"> 	    
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de carpeta -->
@@ -76,16 +70,7 @@ active
 	    	</div>
 	    </div>	    
 	
-   	<div class="portfolio-items">
-    	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de carpeta -->
-				{!!Form::label('Empresa', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('Empresa',null,['class'=>'form-control-3','placeholder'=>'No Empresa'])!!}
-				</div>	
-			</div>
-    	</div>
-    </div>
+   	
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
@@ -95,17 +80,7 @@ active
 				</div>	
 			</div>
     	</div>
-    </div> 
-    <div class="portfolio-items">
-    	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de carpeta -->
-				{!!Form::label('Valor Total', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('valor total',null,['class'=>'form-control-3','placeholder'=>'Valor total'])!!}
-				</div>	
-			</div>
-    	</div>
-    </div>    
+    </div>   
    	<div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
@@ -117,10 +92,22 @@ active
     	</div>
     </div>  
 	</div>
+	<div class="row">
+ 	<div class="pane">    
+    <div class="portfolio-items">
+    		<!-- comentario -->
+			{!!Form::label('Observacion',null, array('class' => 'control-label col-xs-3'))!!}
+			<!-- Caja de texto -->
+			{!!Form::textarea('observacion',null,['class'=>'form-control','placeholder'=>'Ingresa los comentarios del proyecto','size' => '30x5','Style' => 'width: 75%; height: 123px;'])!!}
+    </div>
+    </div>
+	</div>
 	<div class="col-sm-12 text-center"><!-- Caja de texto -->
 		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}
 	</div>
 	</div> 
-    {!!Form::close()!!}		 
+    
+   	
+	
 @stop
 

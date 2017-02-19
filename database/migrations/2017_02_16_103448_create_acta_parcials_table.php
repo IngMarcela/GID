@@ -15,7 +15,15 @@ class CreateActaParcialsTable extends Migration {
 		Schema::create('actaparcials', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('pdf_acta_parcial',100);
+			$table->string('observacion_acta_parcial',250)->nullable();
+			$table->integer('id_contrato')->unsigned();
+			$table->integer('id_folio')->unsigned()->nullable();
 			$table->timestamps();
+			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
+			$table->foreign('id_contrato')->references('id')->on('contratos')->onUpdate('cascade');			
+			$table->foreign('id_folio')->references('id')->on('folios')->onUpdate('cascade');
+			
 		});
 	}
 

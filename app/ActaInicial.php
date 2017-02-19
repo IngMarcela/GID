@@ -8,7 +8,9 @@ class ActaInicial extends Model {
 	protected $table = 'actainicials';
 	
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable =['id_estante','id_caja','id_carpeta','num_folios'
-						  ,'num_acta_inicial','detalle_acta_inicial','valor_acta_inicial','fecha_firma_acta_inicial','fecha_vencimiento_acta_inicial','pdf_acta_inicial','observacion_acta_inicial'];
+	protected $fillable =[
+						 'num_acta_inicial','detalle_acta_inicial','valor_acta_inicial','fecha_firma_acta_inicial','fecha_vencimiento_acta_inicial','pdf_acta_inicial','observacion_acta_inicial',
+	
+						'id_contrato','id_folio'];
 
 }

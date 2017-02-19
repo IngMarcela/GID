@@ -14,8 +14,17 @@ class CreateFacturasTable extends Migration {
 	{
 		Schema::create('facturas', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+			$table->increments('id');	
+			$table->integer('num_factura')->unsigned()->nullable();
+			$table->text('detalle_factura',500);
+			$table->string('pdf_factura',100);
+			$table->string('observacion_factura',250)->nullable();
+			$table->integer('id_contrato')->unsigned();
+			$table->integer('id_folio')->unsigned()->nullable();	
+			$table->timestamps();	
+			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
+			$table->foreign('id_contrato')->references('id')->on('contratos')->onUpdate('cascade');			
+			$table->foreign('id_folio')->references('id')->on('folios')->onUpdate('cascade');
 		});
 	}
 

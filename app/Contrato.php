@@ -8,8 +8,8 @@ class Contrato extends Model {
 	protected $table = 'contratos';
 	
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable = ['num_contrato','objeto','id_vereda','id_municipio','id_departamento',
-	'valor_presupuestado','valor_ejecutado','id_estado','id_estante','id_caja','id_carpeta','fecha_inicio',
+	protected $fillable = ['num_contrato','objeto','id_vereda','id_municipio',
+	'valor_presupuestado','valor_ejecutado','id_estado','id_folio','fecha_inicio',
 	'comentario','id_tipo_contrato','id_contratante','id_contratista'];
 	
 	

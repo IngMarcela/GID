@@ -42,12 +42,24 @@ active
 			</div>
     	</div>
     </div>  
+      
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
     		<div class="form-group"><!-- label de carpeta -->
-				<?php echo Form::label('Folios', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<?php echo Form::label('Cantidad de Folios', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
 				<div class="col-xs-3"><!-- caja de texto -->	
-					<?php echo Form::number('folios',null,['class'=>'form-control-3','placeholder'=>'No de folios']); ?>
+					<?php echo Form::number('cantidad_folios',null,['class'=>'form-control-3','placeholder'=>'No de folios']); ?>
+
+				</div>	
+			</div>
+    	</div>
+    </div> 
+    <div class="portfolio-items">
+    	<div class="col-sm-6 portfolio-item branded logos">
+    		<div class="form-group"><!-- label de carpeta -->
+				<?php echo Form::label('Iniciacion del folio', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+				<div class="col-xs-3"><!-- caja de texto -->	
+					<?php echo Form::number('iniciacion',null,['class'=>'form-control-3','placeholder'=>'No de folios']); ?>
 
 				</div>	
 			</div>

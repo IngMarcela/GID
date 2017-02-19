@@ -11,8 +11,9 @@ AGREGAR CONTRATO
 
 
 <!-- formulario -->
-	{!!Form::open(['route' => 'contrato.store','method' => 'POST'])!!}
-	<div class = "form-horizontal">
+	{!!Form::open(['class' => 'form-horizontal','route' => 'contrato.store','method' => 'POST'])!!}
+	
+	<div class="row">  
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group">
@@ -22,18 +23,9 @@ AGREGAR CONTRATO
 					</div>	
 				</div>
 	    	</div>
-	    </div>
-	    <div class="portfolio-items">
-	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group"><!-- label de caja -->
-					{!!Form::label('Estante', null, array('class' => 'control-label col-xs-3','id' => 'estante'))!!}
-					<div class="col-xs-3"><!-- opciones en el valor de estantes -->
-						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
-						{!!Form::select('Estante',$estantes ,2,['class' => 'form-control','id' => 'estante','onchange' => 'ventana(this.value,"estantes");',])!!}</h2>
-					</div>	
-				</div>    	
-	    	</div>
-	    </div>   
+	    </div>	
+	 </div>
+	<div class="row">    
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de caja -->
@@ -55,7 +47,40 @@ AGREGAR CONTRATO
 					</div>	
 				</div>
 	    	</div>
-	    </div>
+	    </div>	 
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group"><!-- label de carpeta -->
+					{!!Form::label('Estante', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
+					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
+						{!!Form::select('Estante',$estantes ,2,['class' => 'form-control','id' => 'estante','onchange' => 'ventana(this.value,"estantes");',])!!}</h2>
+					</div>	
+				</div>
+	    	</div>
+	    </div>	 	    
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group"><!-- label de carpeta -->
+					{!!Form::label('folio inicial', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
+					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+						<!-- variable $estados es enviada desde el controlador ContratoController@create -->
+						{!!Form::text('folio_inicial',null,['class'=>'form-control','placeholder'=>'folio inicial'])!!}
+					</div>	
+				</div>
+	    	</div>
+	    </div>	    	    
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group"><!-- label de carpeta -->
+					{!!Form::label('folio final', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}	
+					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+						<!-- variable $estados es enviada desde el controlador ContratoController@create -->
+						{!!Form::text('folio_final',null,['class'=>'form-control','placeholder'=>'folio final'])!!}
+					</div>	
+				</div>
+	    	</div>
+	    </div>	    
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de No contrato -->
@@ -65,7 +90,7 @@ AGREGAR CONTRATO
 					</div>	
 				</div>
 	    	</div>
-	    </div>
+	    </div>   
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- estado del contrato -->
@@ -214,11 +239,12 @@ AGREGAR CONTRATO
 	    	</div>
 	    </div>
 	    
-		<div class="timeline-date text-center">	
-			{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}		 
-		</div>
+    	</div>
+	    
+	    <div class="col-sm-12 text-center"><!-- Caja de texto -->
+		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}
+		</div>   
 		
-	</div>
 	{!!Form::close()!!}	
 	
 	

@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 		// definimos el orden en el que se cargaran los registros a la base de datos
 		// $this->call('UserTableSeeder');
-		$this->call('CarpetasTableSeeder');
-		$this->call('CajasTableSeeder');
-		$this->call('EstantesTableSeeder');
+		//$this->call('CarpetasTableSeeder');
+		//$this->call('CajasTableSeeder');
+		//$this->call('EstantesTableSeeder');
 		$this->call('EstadosTableSeeder');
 		$this->call('ContratistasTableSeeder');
 		$this->call('TipoContratosTableSeeder');

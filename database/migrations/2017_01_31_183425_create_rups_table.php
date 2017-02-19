@@ -17,7 +17,7 @@ class CreateRUPsTable extends Migration {
 			// columnas que cotendra la tabla rups y el tipo de dato de estas
 			$table->increments('id');
 			$table->string('serie_rup',60)->unique();
-			$table->integer('id_contratista')->unsigned();
+			$table->integer('id_contratista')->unsigned()->unique();
 			$table->timestamps();
 			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
 			$table->foreign('id_contratista')->references('id')->on('contratistas')->onUpdate('cascade');

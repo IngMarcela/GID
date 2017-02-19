@@ -2,12 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Carpeta extends Model {
+class Folio extends Model {
 
 	// nombre de la tabla a la cual se hara referencia dentro de la base de datos
-	protected $table = 'carpetas';
+	protected $table = 'folios';
 	
-	protected $fillable = ['id_caja','num_carpeta'];
+	protected $fillable = ['id_carpeta','cantidad_folio','iniciacion'];
 	
 
 }

@@ -8,7 +8,6 @@
     {!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/main.css')!!}
     {!!Html::style('css/responsive.css')!!}
-	
     
      <!--[if lt IE 9]>
 	    <script src="js/html5shiv.js"></script>
@@ -37,8 +36,7 @@
                 </div>
             </div>
         </div>
-   </section>
-    
+   </section>    
     <!--/#about-company-->   
     <section id="projects" class="padding-top">
         <div class="container">
@@ -48,14 +46,14 @@
                         <div class="sidebar-item categories">
                             <h4>AGREGAR CONTRATO</h4>
                             <ul class="nav navbar-stacked">
-                               	<li class="@yield('act1')"><a href="actainicial/create">ACTA INICIAL<span class="pull-right"></span></a></li>
-                                <li class="@yield('act2')"><a href="http://localhost:8000/actaparcial">ACTA PARCIAL<span class="pull-right"></span></a></li>
-                                <li class="@yield('act3')"><a href="http://localhost:8000/actafinal">ACTA FINAL<span class="pull-right"></span></a></li>
-                                <li class="@yield('act4')"><a href="http://localhost:8000/actafinal">ACTA LIQUIDACION<span class="pull-right"></span></a></li>
-                                <li class="@yield('act5')"><a href="http://localhost:8000/certificacion">CERTIFICACIÓN<span class="pull-right"></span></a></li>
-                                <li class="@yield('act6')"><a href="http://localhost:8000/factura">FACTURA<span class="pull-right"></span></a></li>
-                                <li class="@yield('act7')"><a href="http://localhost:8000/archivos">ARCHIVOS EXTRAS<span class="pull-right"></span></a></li>
-                                <li><a href="http://localhost:8000/contratos">FINALIZAR<span class="pull-right"></span></a></li>
+                               	<li class="@yield('act1')"><a href="/actainicial/create">ACTA INICIAL<span class="pull-right"></span></a></li>
+                                <li class="@yield('act2')"><a href="/actaparcial/create">ACTA PARCIAL<span class="pull-right"></span></a></li>
+                                <li class="@yield('act3')"><a href="/actafinal/create">ACTA FINAL<span class="pull-right"></span></a></li>
+                                <li class="@yield('act4')"><a href="/actaliquidacion/create">ACTA LIQUIDACION<span class="pull-right"></span></a></li>
+                                <li class="@yield('act5')"><a href="/certificacion/create">CERTIFICACIÓN<span class="pull-right"></span></a></li>
+                                <li class="@yield('act6')"><a href="/factura/create">FACTURA<span class="pull-right"></span></a></li>
+                                <li class="@yield('act7')"><a href="/archivo/create">ARCHIVOS EXTRAS<span class="pull-right"></span></a></li>
+                                <li><a href="/contratos">FINALIZAR<span class="pull-right"></span></a></li>
                             </ul>
                         </div>                      
                         

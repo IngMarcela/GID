@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 // importacion de los request que seran utilizados para la validacion de los datos que se envian desde
 // los formularios
+use GID\Estante;
+use GID\Caja;
+use GID\Carpeta;
+use GID\Folio;
 use GID\Http\Requests\FacturaCreateRequest;
 class FacturaController extends Controller {
 
@@ -27,8 +31,16 @@ class FacturaController extends Controller {
 	 */
 	public function create()
 	{
-	// llamado de las vistas de factura
-		return view('contrato.factura');
+	// carga los registros almacenados en la base de datos para las correspondientes tablas a las
+		// que hacen referencia los modelos
+		$cajas = Caja::lists('num_caja','id');
+		$carpetas = Carpeta::lists('num_carpeta','id');
+		$estantes = Estante::lists('num_estante','id');
+		
+		// llamado de las vistas del acta inicial
+		//la funcion de la presente acta es agregar los detalles conjunto con el pdf
+		// renderiza la vista y le envia los registros 
+		return view('contrato.factura',compact('estantes','cajas','carpetas'));
 	}
 
 	/**

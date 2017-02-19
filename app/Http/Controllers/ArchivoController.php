@@ -4,8 +4,15 @@ use GID\Http\Requests;
 use GID\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+// importacion de los request que seran utilizados para la validacion de los datos que se envian desde
+// los formularios
 
-class ArchivosController extends Controller {
+use GID\Estante;
+use GID\Caja;
+use GID\Carpeta;
+use GID\Folio;
+use GID\Http\Requests\ArchivoCreateRequest;
+class ArchivoController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -24,9 +31,16 @@ class ArchivosController extends Controller {
 	 */
 	public function create()
 	{
-	//amado de las vistas del archivo
-	//la funcion de la presente archivo es agregar los detalles conjunto con el pdf
-		return view('contrato.archivos');
+		// carga los registros almacenados en la base de datos para las correspondientes tablas a las
+		// que hacen referencia los modelos
+		$cajas = Caja::lists('num_caja','id');
+		$carpetas = Carpeta::lists('num_carpeta','id');
+		$estantes = Estante::lists('num_estante','id');
+		
+		// llamado de las vistas del acta inicial
+		//la funcion de la presente acta es agregar los detalles conjunto con el pdf
+		// renderiza la vista y le envia los registros 
+		return view('contrato.archivo',compact('estantes','cajas','carpetas'));
 	}
 
 	/**
@@ -34,9 +48,9 @@ class ArchivosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(ArchivoCreateRequest $request)
 	{
-		//
+		return 'lo hiciste muy bn';
 	}
 
 	/**

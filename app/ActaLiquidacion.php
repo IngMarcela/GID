@@ -8,7 +8,8 @@ class ActaLiquidacion extends Model {
 	protected $table = 'actaliquidacions';
 	
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable =['id_estante','id_caja','id_carpeta','num_folios'
-						  ,'detalle_acta_liquidacion','valor_acta_liquidacion','fecha_firma_acta_liquidacion','pdf_acta_liquidacion','observacion_acta_liquidacion'];
+	protected $fillable =[
+						 	'detalle_acta_liquidacion','valor_acta_liquidacion','fecha_firma_acta_liquidacion','pdf_acta_liquidacion','observacion_acta_liquidacion',
+							'id_contrato','id_folio'];
 
 }

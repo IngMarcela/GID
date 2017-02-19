@@ -12,7 +12,7 @@
 */
 Route::get('/','FrontController@index');
 //Rutas de la pagina principal de contratos
-Route::resource('contratos','contratoController');
+Route::resource('contratos','ContratoController');
 //Actas de contrato
 Route::resource('actainicial','ActaInicialController');
 Route::resource('actaparcial','ActaParcialController');
@@ -20,7 +20,7 @@ Route::resource('actafinal','ActaFinalController');
 Route::resource('actaliquidacion','ActaLiquidacionController');
 
 //archivos de contrato
-Route::resource('archivos','ArchivosController');
+Route::resource('archivo','ArchivoController');
 //buscar contrato
 Route::get('buscar','contratoController@buscar');
 //certificacion de contrato

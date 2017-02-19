@@ -17,7 +17,10 @@ class CreateCajasTable extends Migration {
 			// columnas que cotendra la tabla cajas y el tipo de dato de estas
 			$table->increments('id');
 			$table->tinyInteger('num_caja')->unsigned()->unique();
-			$table->timestamps();
+			$table->integer('id_estante')->unsigned();
+			$table->timestamps();			
+			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
+			$table->foreign('id_estante')->references('id')->on('estantes')->onUpdate('cascade');
 		});
 	}
 

@@ -7,6 +7,7 @@ use GID\Http\Controllers\Controller;
 use GID\Estante;
 use GID\Caja;
 use GID\Carpeta;
+use GID\Folio;
 use GID\Departamento;
 use GID\Municipio;
 use GID\Estado;

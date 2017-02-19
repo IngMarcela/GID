@@ -17,7 +17,10 @@ class CreateCarpetasTable extends Migration {
 			// columnas que cotendra la tabla carpetas y el tipo de dato de estas
 			$table->increments('id');
 			$table->tinyInteger('num_carpeta')->unsigned()->unique();
-			$table->timestamps();
+			$table->integer('id_caja')->unsigned();
+			$table->timestamps();			
+			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
+			$table->foreign('id_caja')->references('id')->on('cajas')->onUpdate('cascade');
 		});
 	}
 

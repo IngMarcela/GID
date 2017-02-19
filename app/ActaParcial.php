@@ -8,7 +8,8 @@ class ActaParcial extends Model {
 	protected $table = 'actaparcials';
 	
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable =['id_estante','id_caja','id_carpeta','num_folios'
-						  ,'num_acta_parcial','detalle_acta_parcial','pdf_acta_parcial','observacion_acta_parcial'];
+	protected $fillable =	[						  			
+							'num_acta_parcial','detalle_acta_parcial','pdf_acta_parcial','observacion_acta_parcial',
+							'id_contrato','id_folio'];
 
 }
