@@ -23,7 +23,7 @@ class ContratoCrearRequest extends Request {
 	{
 		return [
 			'No_Contrato' 			=>	'required|max:50|unique:contratos,num_contrato',
-			'Municipio_o_Vereda'  =>	'numeric|min:1',
+			'Municipio_o_Vereda'  	=>	'numeric|min:1',
 			'Departamento'			=>	'required|numeric|min:1',
 			'Objeto'				=>	'required|max:950|string',
 			'Valor_Presupuestado'	=>	'required|numeric|min:100000',

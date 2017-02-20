@@ -14,6 +14,10 @@ function openVentana(ventana){//llama a la funcion de abrir una venta
 	        break;
 	        case 'municipios':
 	        	
+		       	$(".ventanaMunicipios").slideDown("slow");
+	        break;
+	        case 'veredas':
+	        	
 		       	$(".ventanaVeredas").slideDown("slow");
 	        break;
 	    }
@@ -39,6 +43,10 @@ function closeVentana(ventana){
 	        break;
 	        case 'municipios':
 	        	
+		       	$(".ventanaMunicipios").slideUp("fast");
+	        break;
+	        case 'veredas':
+	        	
 		       	$(".ventanaVeredas").slideUp("fast");
 	        break;
 	    }
@@ -46,14 +54,18 @@ function closeVentana(ventana){
 	
 }
 
-function ventana(valor,tabla) {
-	
+function ventana(valor,tabla,referencia) {
+	alert("estante numero: "+referencia);
 	switch(valor) {
 	    
 	    
 	    case '0':
 	    	switch(tabla) {
-		    	case 'veredas':
+		    	case 'municipios':
+		        	
+		        	openVentana(tabla);
+		        break;
+		        case 'veredas':
 		        	
 		        	openVentana(tabla);
 		        break;
@@ -70,7 +82,7 @@ function ventana(valor,tabla) {
 		        	openVentana(tabla);
 		        break;
 		        case 'cajas':
-		    		
+		    		$("#NuevaCaja").val(referencia);
 		        	openVentana(tabla);
 		        break;
 		        case 'carpetas':

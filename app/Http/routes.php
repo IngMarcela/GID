@@ -35,7 +35,9 @@ Route::resource('vereda','VeredaController');
 Route::resource('contrato','ContratoController');
 
 // recibe un id de un departamento con el cual se hallara los municipios asociados
-Route::get('municipio/{id}','ContratoController@getMunicipios');
+Route::get('municipios/{id}','ContratoController@getMunicipios');
+// recibe un id de una municipio con el cual se hallara las veredas asociadas
+Route::get('veredas/{id}','ContratoController@getVeredas');
 
 // recibe un id de un departamento con el cual se hallara el rup asociado
 Route::get('rup/{id}','ContratoController@getRup');

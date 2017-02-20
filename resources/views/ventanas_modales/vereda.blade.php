@@ -3,7 +3,7 @@
 		<div class="formu">
 		<div class="cerrar"><a href="javascript:closeVentana('veredas');">Cerrar X</a></div>
 			<div class="form-group"><!-- label de vereda o municipio -->
-				{!!Form::label('Municipio o Vereda', null, array('class' => 'control-label col-xs-3'))!!}
+				{!!Form::label('Vereda', null, array('class' => 'control-label col-xs-3'))!!}
 				<div class="col-xs-3"><!-- caja de texto -->	
 					{!!Form::text('NuevaVereda',null,['class'=>'form-control','placeholder'=>'Ingrese el Nombre'])!!}
 				</div>

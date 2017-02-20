@@ -11,7 +11,7 @@ AGREGAR CONTRATO
 
 
 <!-- formulario -->
-	{!!Form::open(['route' => 'contrato.store','method' => 'POST'])!!}
+	{!!Form::open(['route' => 'contrato.store','method' => 'POST','name' => 'form_principal', 'id' => 'form_principal'])!!}
 	<div class = "form-horizontal">
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
@@ -40,7 +40,7 @@ AGREGAR CONTRATO
 					{!!Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato'))!!}
 					<div class="col-xs-3"><!-- opciones en el valor de cajas -->
 						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
-						{!!Form::select('Caja',$cajas ,2,['class' => 'form-control','id' => 'caja','onchange' => 'ventana(this.value,"cajas");',])!!}</h2>
+						{!!Form::select('Caja',$cajas ,2,['class' => 'form-control','id' => 'caja','onchange' => 'ventana(this.value,"cajas",document.form_principal.Estante.value);',])!!}</h2>
 					</div>	
 				</div>    	
 	    	</div>
@@ -220,8 +220,7 @@ AGREGAR CONTRATO
 		
 	</div>
 	{!!Form::close()!!}	
-	
-	
+
 	@include('ventanas_modales.estante')
 	@include('ventanas_modales.caja')
 	@include('ventanas_modales.carpeta')

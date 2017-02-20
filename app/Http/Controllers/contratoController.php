@@ -9,6 +9,7 @@ use GID\Caja;
 use GID\Carpeta;
 use GID\Departamento;
 use GID\Municipio;
+use GID\Vereda;
 use GID\Estado;
 use GID\Contratista;
 use GID\Contratante;
@@ -74,6 +75,18 @@ class ContratoController extends Controller {
 		}
 	}
 	
+	
+	public function getVeredas(Request $request, $id){
+		// valida si la peticion se realizo mediante ajax	
+		if($request->ajax()){
+			// invoca el metodo veredas() perteneciente al modelo Vereda
+			$veredas = Vereda::veredas($id);
+			// envia la respuesta mediante un tipo json
+			return response()->json($veredas);
+		}
+	}
+	
+	
 	public function getRup(Request $request, $id){
 		// valida si la peticion se realizo mediante ajax	
 		if($request->ajax()){
@@ -92,61 +105,94 @@ class ContratoController extends Controller {
 	 */
 	public function store(ContratoCrearRequest $request)
 	{
-		// obtiene el id en caso de encontar que el rup entrante ya se encontraba almacenado en la tabla rups 
-		$rup=RUP::select('id')->where('serie_rup', '=', $request['RUP'])->get();
+		$resultado;
 		
-		// si el rup entrante no estaba guardado en la tabla rups, se procede a guardarlo
-		if($rup->first() == null){
-			\GID\RUP::create([
-			'serie_rup' 			=> $request['RUP'],
-			'id_contratista' 		=> 	$request['Contratista'],
+		\DB::beginTransaction();
+
+        try {
+		
+			// obtiene el id en caso de encontar que el rup entrante ya se encontraba almacenado en la tabla rups 
+			$rup=RUP::select('id_contratista')->where('serie_rup', '=', $request['RUP'])->get();
+			
+			// si el rup entrante no estaba guardado en la tabla rups, se procede a guardarlo
+			if($rup->first() == null){
+				\GID\RUP::create([
+				'serie_rup' 			=> $request['RUP'],
+				'id_contratista' 		=> 	$request['Contratista'],
+				]);
+				$ultimo_RUP = RUP::select('id')->orderby('created_at','DESC')->take(1)->get();
+				$id_contratista = $ultimo_RUP[0]->id_contratista;
+			}else{
+				$id_contratista = $rup[0]->id_contratista;
+			}		
+			
+			
+			// MySql pasa la entrada a minusculas y comparar con minusculas!
+			$contratante=Contratante::select('id')->where('contratante', '=',  $request['Contratante'])->where('id_tipo_contratante', '=',  $request['Tipo_contratante'])->get();
+			
+				
+			if($contratante->first() == null){
+				\GID\Contratante::create([
+					'contratante'			=>	$request['Contratante'],
+					'id_tipo_contratante' 	=> 	$request['Tipo_de_Contratante'],
+				]);
+				
+				// obtiene el id perteneciente al ultimo registro insertado en la tabla contratantes 
+				$ultimo = Contratante::select('id')->orderby('created_at','DESC')->take(1)->get();
+				$id_contratante = $ultimo[0]->id;
+			}
+			else{
+				
+				$id_contratante = $contratante[0]->id;
+				
+			}
+			
+			
+			$id_contrato ;
+			
+			\GID\Contrato::create([
+				'num_contrato' 			=> 	$request['No_Contrato'],
+				'objeto' 				=> 	$request['Objeto'],
+				'id_vereda' 			=> 	null,
+				'id_municipio' 			=> 	$request['Municipio_o_Vereda'],
+				'id_departamento' 		=> 	$request['Departamento'],
+				'valor_presupuestado' 	=> 	$request['Valor_Presupuestado'],
+				'valor_ejecutado' 		=> 	$request['Valor_Ejecutado'],
+				'id_estado' 			=> 	$request['Estado_del_Contrato'],
+				'id_estante' 			=> 	$request['Estante'],
+				'id_caja' 				=> 	$request['Caja'],
+				'id_carpeta' 			=> 	$request['Carpeta'],
+				'fecha_inicio' 			=> 	$request['Fecha_de_Inicio'],
+				'comentario' 			=> 	$request['Comentario'],
+				'id_tipo_contrato' 		=> 	$request['Tipo_de_Contrato'],
+				'id_contratante' 		=> 	$id_contratante,
+				'id_contratista' 		=> 	$id_contratista,
 			]);
-		}		
-		
-		
-		// MySql pasa la entrada a minusculas y comparar con minusculas!
-		$contratante=Contratante::select('id')->where('contratante', '=',  $request['Contratante'])->get();
-		
 			
-		if($contratante->first() == null){
-			\GID\Contratante::create([
-				'contratante'			=>	$request['Contratante'],
-				'id_tipo_contratante' 	=> 	$request['Tipo_de_Contratante'],
-			]);
+			$ultimo_contrato = \GID\Contrato::select('id')->orderby('created_at','DESC')->take(1)->get();
+			$id_contrato = $ultimo_contrato[0]->id;
+			// Hacemos los cambios permanentes ya que no han habido errores
+        	\DB::commit();
 			
-			// obtiene el id perteneciente al ultimo registro insertado en la tabla contratantes 
-			$ultimo = Contratante::select('id')->orderby('created_at','DESC')->take(1)->get();
-			$id_con = $ultimo[0]->id;
-		}
-		else{
 			
-			$id_con = $contratante[0]->id;
+		
 			
 		}
+        // Ha ocurrido un error, devolvemos la BD a su estado previo y hacemos lo que queramos con esa excepción
+        catch (\Exception $e)
+        {
+                \DB::rollback();
+				
+		 		return $resultado='ERROR (' . $e->getCode() . '): ' . $e->getMessage();
+        }
+
+        
+		//Session::flash('message','Contrato Agregado Correctamente');
+		//return Redirect::to('/contrato');
+		
+		return  redirect('/contrato')->with('message','Contrato Agregado Correctamente')->with('id', $id_contrato);
 		
 		
-		
-		
-		\GID\Contrato::create([
-			'num_contrato' 			=> 	$request['No_Contrato'],
-			'objeto' 				=> 	$request['Objeto'],
-			'id_vereda' 			=> 	null,
-			'id_municipio' 			=> 	$request['Municipio_o_Vereda'],
-			'id_departamento' 		=> 	$request['Departamento'],
-			'valor_presupuestado' 	=> 	$request['Valor_Presupuestado'],
-			'valor_ejecutado' 		=> 	$request['Valor_Ejecutado'],
-			'id_estado' 			=> 	$request['Estado_del_Contrato'],
-			'id_estante' 			=> 	$request['Estante'],
-			'id_caja' 				=> 	$request['Caja'],
-			'id_carpeta' 			=> 	$request['Carpeta'],
-			'fecha_inicio' 			=> 	$request['Fecha_de_Inicio'],
-			'comentario' 			=> 	$request['Comentario'],
-			'id_tipo_contrato' 		=> 	$request['Tipo_de_Contrato'],
-			'id_contratante' 		=> 	$id_con,
-			'id_contratista' 		=> 	$request['Contratista'],
-		]);
-		
-		return "contrato almacenado";
 		
 	}
 

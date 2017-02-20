@@ -10,7 +10,7 @@ AGREGAR CONTRATO
 
 
 <!-- formulario -->
-	<?php echo Form::open(['route' => 'contrato.store','method' => 'POST']); ?>
+	<?php echo Form::open(['route' => 'contrato.store','method' => 'POST','name' => 'form_principal', 'id' => 'form_principal']); ?>
 
 	<div class = "form-horizontal">
 		<div class="portfolio-items">
@@ -43,7 +43,7 @@ AGREGAR CONTRATO
 
 					<div class="col-xs-3"><!-- opciones en el valor de cajas -->
 						<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
-						<?php echo Form::select('Caja',$cajas ,2,['class' => 'form-control','id' => 'caja','onchange' => 'ventana(this.value,"cajas");',]); ?></h2>
+						<?php echo Form::select('Caja',$cajas ,2,['class' => 'form-control','id' => 'caja','onchange' => 'ventana(this.value,"cajas",document.form_principal.Estante.value);',]); ?></h2>
 					</div>	
 				</div>    	
 	    	</div>
@@ -249,8 +249,7 @@ AGREGAR CONTRATO
 		
 	</div>
 	<?php echo Form::close(); ?>	
-	
-	
+
 	<?php echo $__env->make('ventanas_modales.estante', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	<?php echo $__env->make('ventanas_modales.caja', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	<?php echo $__env->make('ventanas_modales.carpeta', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

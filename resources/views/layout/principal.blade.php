@@ -94,12 +94,16 @@
     {!!Html::script('js/bootstrap.min.js')!!}
     
     <!--select dinamicos-->
-    {!!Html::script('js/dropdown.js')!!}
+    {!!Html::script('js/dropdownDepartamento.js')!!}
+    {!!Html::script('js/dropdownMunicipio.js')!!}
+    {!!Html::script('js/dropdownEstante.js')!!}
+    {!!Html::script('js/dropdownCaja.js')!!}
+    
     {!!Html::script('js/cargarRUP.js')!!}
     
     <!--ventana modal-->
     {!!Html::script('js/funcion.js')!!}
-    {!!Html::script('js/guardarCaja.js')!!}
+
 
     
     

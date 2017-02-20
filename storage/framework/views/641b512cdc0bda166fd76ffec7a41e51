@@ -99,15 +99,21 @@
 
     
     <!--select dinamicos-->
-    <?php echo Html::script('js/dropdown.js'); ?>
+    <?php echo Html::script('js/dropdownDepartamento.js'); ?>
 
+    <?php echo Html::script('js/dropdownMunicipio.js'); ?>
+
+    <?php echo Html::script('js/dropdownEstante.js'); ?>
+
+    <?php echo Html::script('js/dropdownCaja.js'); ?>
+
+    
     <?php echo Html::script('js/cargarRUP.js'); ?>
 
     
     <!--ventana modal-->
     <?php echo Html::script('js/funcion.js'); ?>
 
-    <?php echo Html::script('js/guardarCaja.js'); ?>
 
 
     
