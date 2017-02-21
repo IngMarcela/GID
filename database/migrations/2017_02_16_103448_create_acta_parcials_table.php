@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVeredasTable extends Migration {
+class CreateActaParcialsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,17 @@ class CreateVeredasTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('veredas', function(Blueprint $table)
+		Schema::create('actaparcials', function(Blueprint $table)
 		{
-			// columnas que cotendra la tabla veredas y el tipo de dato de estas
 			$table->increments('id');
-			$table->integer('id_departamento')->unsigned();
-			$table->string('nom_vereda',60);
+			$table->string('pdf_acta_parcial',100);
+			$table->string('observacion_acta_parcial',250)->nullable();
+			$table->integer('id_contrato')->unsigned();
 			$table->timestamps();
 			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
-			$table->foreign('id_departamento')->references('id')->on('departamentos')->onUpdate('cascade');
+			$table->foreign('id_contrato')->references('id')->on('contratos')->onUpdate('cascade');			
+			
+			
 		});
 	}
 
@@ -31,7 +33,7 @@ class CreateVeredasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('veredas');
+		Schema::drop('acta_parcials');
 	}
 
 }

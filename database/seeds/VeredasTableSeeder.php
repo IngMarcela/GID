@@ -14,18 +14,13 @@ class VeredasTableSeeder extends Seeder {
 	{
 		// registros que se cargaran de manera automatica a la tabla veredas
 		\DB::table('veredas')->insert(array(
-				'id_departamento' => '1',
+				'id_municipio' => '10',
 				'nom_vereda'   => 'Yanaconas'
 		));
 		
 		\DB::table('veredas')->insert(array(
-				'id_departamento' => '1',
+				'id_municipio' => '10',
 				'nom_vereda'   => 'Pueblillo'
-		));
-		
-		\DB::table('veredas')->insert(array(
-				'id_departamento' => '2',
-				'nom_vereda'   => 'La Estrella'
 		));
 		
 			

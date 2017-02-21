@@ -37,7 +37,8 @@ class CajaController extends Controller {
 		//
 		
             Caja::create([
-            'num_caja'	=>	$request['NuevaCaja'],
+            'num_caja'		=>	$request['NuevaCaja'],
+            'id_estante'	=>	$request['NuevaCajaE'],
             ]);
 
             return redirect('contrato/create')->with('message', 'Caja Agregada');

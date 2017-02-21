@@ -2,7 +2,7 @@
 
 use GID\Http\Requests;
 use GID\Http\Controllers\Controller;
-
+use GID\Vereda;
 use Illuminate\Http\Request;
 
 class VeredaController extends Controller {
@@ -32,10 +32,18 @@ class VeredaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
 		//
+		
+            Vereda::create([
+            'nom_vereda'		=>	$request['NuevaVereda'],
+            'id_municipio'	=>	$request['NuevaVeredaM'],
+            ]);
+
+            return redirect('contrato/create')->with('message', 'Vereda Agregada');
 	}
+
 
 	/**
 	 * Display the specified resource.

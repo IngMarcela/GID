@@ -8,6 +8,8 @@
     {!!Html::style('css/bootstrap.min.css')!!}
     {!!Html::style('css/main.css')!!}
     {!!Html::style('css/responsive.css')!!}
+    
+    {!!Html::style('css/jquery.fileupload.css')!!}
 	
     
      <!--[if lt IE 9]>
@@ -71,10 +73,7 @@
         <div class="container">
     <!-- hace el llamado a la ventana emergente -->           
            @yield('modal')
-            <div class="row">
-            		@yield('content') 
-            </div>
-            @yield('boton')
+            @yield('content') 
         </div>
     </section>
     <!--/#team-->
@@ -105,6 +104,7 @@
     {!!Html::script('js/funcion.js')!!}
 
 
+   @yield('script')
     
     
     

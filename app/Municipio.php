@@ -8,7 +8,7 @@ class Municipio extends Model {
 	protected $table = 'municipios';
 
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable = ['id_departamento','nom_municipio'];
+	protected $fillable = ['nom_municipio','id_departamento'];
 	
 	public function Vereda(){
 		return $this->hasMany('GID\Vereda');

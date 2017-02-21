@@ -9,9 +9,13 @@
 					</div>
 					<div class="col-sm-6 portfolio-item branded logos">
 		    			<div class="form-group">
+		    				{!!Form::label('',null, array('class' => 'control-label col-xs-3'))!!}
+							<div class="col-xs-3">	
+								<input type="hidden" name="NuevaCarpetaC" id="NuevaCarpetaC">
+							</div>	
 							{!!Form::label('',null, array('class' => 'control-label col-xs-3'))!!}
 							<div class="col-xs-3">	
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 							</div>	
 						</div>
 		    		</div>	

@@ -1,7 +1,7 @@
 @extends('layout.principal')
 @stop
 @section('asig')
-AGREGAR CONTRATO
+AGREGAR OTROSI
 <p>ARCHIVOS EXTRAS</p>
 @stop
 @section('content')

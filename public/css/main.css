@@ -454,16 +454,19 @@ ul.sub-menu {
 }
 
 .form-control {
-  border: 1px solid #d99c4e;
-  font-weight: 300;
-  outline: none;
-  box-shadow: none;
-  height: 40px;
+    border: 1px solid #190ee0;
+    font-weight: 300;
+    outline: none;
+    box-shadow: none;
+    height: 40px;
+    width: 170px;
 }
+
+
 
 .form-control:hover, 
 .form-control:focus{
-  border-color: #d29948;
+  border-color: #efcb09;
   outline: none;
   box-shadow: none;
 }
@@ -1212,12 +1215,14 @@ Portfolio with right sidebar
 .categories .navbar-stacked li a:hover{
   background: none;
   margin-left: 20px;
-  color: #dab074;
+  color: #f3f907;
   opacity: 1;
+  font-weight: bold;
 }
 
+
 .categories .navbar-stacked li.active a{
-  color: #dab074;
+  color: #0e13f5;
   padding-left: 20px;
 }
 
@@ -2635,4 +2640,23 @@ input.btn.btn-primary
 	font-weight: 900;
 	text-align: right;
 	margin: 9px;
+}
+.centro {
+    text-align: center;
+}
+.pane {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-left: 15%;
+}
+.form-control-3 {
+    border: 1px solid #190ee0;
+    font-weight: 300;
+    outline: none;
+    box-shadow: none;
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
 }

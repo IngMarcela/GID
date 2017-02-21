@@ -1,22 +1,22 @@
 function openVentana(ventana){//llama a la funcion de abrir una venta 
 	 switch(ventana) {
-	    	case 'estantes':
+	    	case "estantes":
 	    		
 		        $(".ventanaEstantes").slideDown("slow");//accion de sobresalir y darle una background transparente sin afectar las funciones internas
 	        break;
-	        case 'cajas':
+	        case "cajas":
 	    		
 		        $(".ventanaCajas").slideDown("slow");//accion de sobresalir y darle una background transparente sin afectar las funciones internas
 	        break;
-	        case 'carpetas':
+	        case "carpetas":
 	    		
 		        $(".ventanaCarpetas").slideDown("slow");//accion de sobresalir y darle una background transparente sin afectar las funciones internas
 	        break;
-	        case 'municipios':
+	        case "municipios":
 	        	
 		       	$(".ventanaMunicipios").slideDown("slow");
 	        break;
-	        case 'veredas':
+	        case "veredas":
 	        	
 		       	$(".ventanaVeredas").slideDown("slow");
 	        break;
@@ -29,23 +29,23 @@ function closeVentana(ventana){
 	    
 	    switch(ventana) {
 	    	
-	    	case 'estantes':
+	    	case "estantes":
 	    		
 		       	$(".ventanaEstantes").slideUp("fast");
 	        break;
-	        case 'cajas':
+	        case "cajas":
 	    		
 		       	$(".ventanaCajas").slideUp("fast");
 	        break;
-	    	case 'carpetas':
+	    	case "carpetas":
 	    		
 		       	$(".ventanaCarpetas").slideUp("fast");
 	        break;
-	        case 'municipios':
+	        case "municipios":
 	        	
 		       	$(".ventanaMunicipios").slideUp("fast");
 	        break;
-	        case 'veredas':
+	        case "veredas":
 	        	
 		       	$(".ventanaVeredas").slideUp("fast");
 	        break;
@@ -55,40 +55,46 @@ function closeVentana(ventana){
 }
 
 function ventana(valor,tabla,referencia) {
-	alert("estante numero: "+referencia);
+	
 	switch(valor) {
 	    
 	    
-	    case '0':
+	    case '0':// debido a que 0 es el numero del primer valor que se asigna a  los select desde 
+	    		// los respectivos archivos .js una vez que se trae los registros desde la base de datos
+ 	   	
 	    	switch(tabla) {
-		    	case 'municipios':
-		        	
+	    		case "cajas":
+		    		$("#NuevaCajaE").val(referencia);
 		        	openVentana(tabla);
 		        break;
-		        case 'veredas':
-		        	
+		        
+		        case "carpetas":
+		    		$("#NuevaCarpetaC").val(referencia);
+		        	openVentana(tabla);
+		        break;
+		        
+		    	case "municipios":
+		        	$("#NuevoMunicipioD").val(referencia);
+		        	openVentana(tabla);
+		        break;
+		        
+		        case "veredas":
+		        	$("#NuevaVeredaM").val(referencia);
 		        	openVentana(tabla);
 		        break;
 		    }
 	    break;
 	    
 	    
-	    case '1':// dibido a que 1 es el numero del id de cada primer registro que encuentra en la base de datos
+	    case '1':// debido a que 1 es el numero del id de cada primer registro que encuentra en la base de datos
 	    		// y los registros que se muestran en los selects son extraidos de la base de datos
  	   	
 	    	switch(tabla) {
-		    	case 'estantes':
+		    	case "estantes":
 		    		
 		        	openVentana(tabla);
 		        break;
-		        case 'cajas':
-		    		$("#NuevaCaja").val(referencia);
-		        	openVentana(tabla);
-		        break;
-		        case 'carpetas':
-		    		
-		        	openVentana(tabla);
-		        break;
+		        
 		        
 		    }
 	    break;

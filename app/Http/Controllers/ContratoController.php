@@ -7,6 +7,7 @@ use GID\Http\Controllers\Controller;
 use GID\Estante;
 use GID\Caja;
 use GID\Carpeta;
+use GID\Folio;
 use GID\Departamento;
 use GID\Municipio;
 use GID\Vereda;
@@ -15,6 +16,8 @@ use GID\Contratista;
 use GID\Contratante;
 use GID\TipoContratante;
 use GID\TipoContrato;
+use GID\User;
+use GID\Contrato;
 use GID\RUP;
 
 // importacion de los request que seran utilizados para la validacion de los datos que se envian desde
@@ -40,7 +43,7 @@ class ContratoController extends Controller {
 	 */
 	public function index()
 	{
-		
+		return view('contrato.contratos');
 	}
 
 	/**
@@ -52,8 +55,6 @@ class ContratoController extends Controller {
 	{
 		// carga los registros almacenados en la base de datos para las correspondientes tablas a las
 		// que hacen referencia los modelos
-		$cajas = Caja::lists('num_caja','id');
-		$carpetas = Carpeta::lists('num_carpeta','id');
 		$estantes = Estante::lists('num_estante','id');
 		$departamentos = Departamento::lists('nom_departamento','id');
 		$estados = Estado::lists('estado','id');
@@ -61,9 +62,29 @@ class ContratoController extends Controller {
 		$tipo_contratantes = TipoContratante::lists('tipo_contratante','id');
 		$tipo_contratos = TipoContrato::lists('tipo_contrato','id');
 		// renderiza la vista y le envia los registros 
-		return view('contrato.create',compact('estantes','cajas','carpetas','departamentos','estados','contratistas','tipo_contratantes','tipo_contratos'));
+		return view('contrato.create',compact('estantes','departamentos','estados','contratistas','tipo_contratantes','tipo_contratos'));
 	}
-
+	
+	public function getCajas(Request $request, $id){
+		// valida si la peticion se realizo mediante ajax	
+		if($request->ajax()){
+			// invoca el metodo cajas() perteneciente al modelo Caja
+			$cajas = Caja::cajas($id);
+			// envia la respuesta mediante un tipo json
+			return response()->json($cajas);
+		}
+	}
+	
+	
+	public function getCarpetas(Request $request, $id){
+		// valida si la peticion se realizo mediante ajax	
+		if($request->ajax()){
+			// invoca el metodo carpetas() perteneciente al modelo Carpeta
+			$carpetas = Carpeta::carpetas($id);
+			// envia la respuesta mediante un tipo json
+			return response()->json($carpetas);
+		}
+	}
 
 	public function getMunicipios(Request $request, $id){
 		// valida si la peticion se realizo mediante ajax	
@@ -112,7 +133,7 @@ class ContratoController extends Controller {
         try {
 		
 			// obtiene el id en caso de encontar que el rup entrante ya se encontraba almacenado en la tabla rups 
-			$rup=RUP::select('id_contratista')->where('serie_rup', '=', $request['RUP'])->get();
+			$rup=RUP::select('id_contratista')->where('serie_rup', '=', $request['RUP'])->where('id_contratista', '=', $request['Contratista'])->get();
 			
 			// si el rup entrante no estaba guardado en la tabla rups, se procede a guardarlo
 			if($rup->first() == null){
@@ -120,7 +141,7 @@ class ContratoController extends Controller {
 				'serie_rup' 			=> $request['RUP'],
 				'id_contratista' 		=> 	$request['Contratista'],
 				]);
-				$ultimo_RUP = RUP::select('id')->orderby('created_at','DESC')->take(1)->get();
+				$ultimo_RUP = RUP::select('id_contratista')->orderby('created_at','DESC')->take(1)->get();
 				$id_contratista = $ultimo_RUP[0]->id_contratista;
 			}else{
 				$id_contratista = $rup[0]->id_contratista;
@@ -128,7 +149,7 @@ class ContratoController extends Controller {
 			
 			
 			// MySql pasa la entrada a minusculas y comparar con minusculas!
-			$contratante=Contratante::select('id')->where('contratante', '=',  $request['Contratante'])->where('id_tipo_contratante', '=',  $request['Tipo_contratante'])->get();
+			$contratante=Contratante::select('id')->where('contratante', '=',  $request['Contratante'])->where('id_tipo_contratante', '=',  $request['Tipo_de_Contratante'])->get();
 			
 				
 			if($contratante->first() == null){
@@ -150,20 +171,24 @@ class ContratoController extends Controller {
 			
 			$id_contrato ;
 			
+			
+			if ($request['Vereda'] == 0) {
+				$vereda = null;
+			} else {
+				$vereda = $request['Vereda'];
+			}
+		
+			
 			\GID\Contrato::create([
 				'num_contrato' 			=> 	$request['No_Contrato'],
 				'objeto' 				=> 	$request['Objeto'],
-				'id_vereda' 			=> 	null,
-				'id_municipio' 			=> 	$request['Municipio_o_Vereda'],
-				'id_departamento' 		=> 	$request['Departamento'],
-				'valor_presupuestado' 	=> 	$request['Valor_Presupuestado'],
-				'valor_ejecutado' 		=> 	$request['Valor_Ejecutado'],
-				'id_estado' 			=> 	$request['Estado_del_Contrato'],
-				'id_estante' 			=> 	$request['Estante'],
-				'id_caja' 				=> 	$request['Caja'],
-				'id_carpeta' 			=> 	$request['Carpeta'],
 				'fecha_inicio' 			=> 	$request['Fecha_de_Inicio'],
+				'valor_presupuestado' 	=> 	$request['Valor_Presupuestado'],
+				'valor_ejecutado' 		=> 	$request['Valor_Ejecutado'],								
 				'comentario' 			=> 	$request['Comentario'],
+				'id_vereda' 			=> 	$vereda,
+				'id_municipio' 			=> 	$request['Municipio'],
+				'id_estado' 			=> 	$request['Estado_del_Contrato'],
 				'id_tipo_contrato' 		=> 	$request['Tipo_de_Contrato'],
 				'id_contratante' 		=> 	$id_contratante,
 				'id_contratista' 		=> 	$id_contratista,
@@ -171,6 +196,20 @@ class ContratoController extends Controller {
 			
 			$ultimo_contrato = \GID\Contrato::select('id')->orderby('created_at','DESC')->take(1)->get();
 			$id_contrato = $ultimo_contrato[0]->id;
+			
+			
+			for ($i=$request['Folio_Inicial']; $i <= $request['Folio_Final'] ; $i++) {
+					 
+				\GID\Folio::create([
+				'id_carpeta' => $request['Carpeta'],
+				'id_contrato' => $id_contrato,
+				'num_folio' => $i,
+				
+				]);
+			}
+			
+			
+			
 			// Hacemos los cambios permanentes ya que no han habido errores
         	\DB::commit();
 			
@@ -240,41 +279,27 @@ class ContratoController extends Controller {
 	{
 		//
 	}
-	// llamado de las vistas del contrato 
-	//encontramos las opciones de agregar contrato y buscar contrato
-	public function contratos()
+	// llamado de las vistas de la busqueda
+	public function buscar(Request $request)
 	{
-		return view('contrato.contratos');
+		//creacion de la variable 
+		//hace referencia al namespace de la aplicaci�n 
+		//dentro de la aplicacion referenciamos el modelo con el User 
+		//all traer todos los elementros que contiene los elementos del modelo User 
+		//paginate los divide en seccioness
+		$Contratos = Contrato::paginate(5);
+		//Retorna una vista donde se entuentra el usuario con su respectivo vista
+		//enviar informaci�n 
+		//compact, manera adecuada que en la vista contenga la informacion
+		//basado en la variable user 
+		//la informacion de encuentra en la vista
+		////////////////////////////////////////////////////////
+		//preguntamos si el Request
+		if($request->ajax()){
+			return response()->json(view('contrato.buscar',compact('Contratos'))->render());
+			
+				
+		}
+        return view('contrato.buscar',compact('Contratos'));
 	}
-	// llamado de las vistas del acta inicial
-	//la funcion de la presente acta es agregar los detalles conjunto con el pdf
-	public function actainicial()	
-	{
-		return view('contrato.actainicial');
-	}
-	// llamado de las vistas del acta parcial
-	//la funcion de la presente acta es agregar los detalles conjunto con el pdf
-	public function actaparcial()
-	{
-		return view('contrato.actaParcial');
-	}
-	// llamado de las vistas del acta final
-	//la funcion de la presente acta es agregar los detalles conjunto con el pdf
-	public function actafinal()
-	{
-		return view('contrato.actafinal');
-	}
-	// llamado de las vistas del archivo
-	//la funcion de la presente archivo es agregar los detalles conjunto con el pdf
-	public function archivos()
-	{
-		return view('contrato.archivos');
-	}
-	// llamado de las vistas de la certificacion
-	//la funcion de la presente archivo es agregar los detalles conjunto con el pdf
-	public function certificacion()
-	{
-		return view('contrato.certificacion');
-	}
-
 }

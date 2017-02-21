@@ -3,35 +3,139 @@
 AGREGAR CONTRATO
 <p>ACTA INICIAL</p>
 <?php $__env->stopSection(); ?>
+<?php $__env->startSection('act3'); ?>
+active
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-	<?php echo Form::open(['class' => 'form-horizontal','url'=>'archivos']); ?>
+<?php echo $__env->make('alertas.request', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo Form::open(['class' => 'form-horizontal','route' => 'actafinal.store','method' => 'POST']); ?>
 
-	<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Detalle</th>
-        <th>Valor final</th>
-        <th>Fecha de firma</th>       
-        <th>PDF</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><?php echo Form::text('no',null,['class'=>'form-control','placeholder'=>'No']); ?></td>
-        <td><?php echo Form::text('actai1',null,['class'=>'form-control','placeholder'=>'Acta Inicial']); ?></td>
-        <td><?php echo Form::number('valor',null,['class'=>'form-control','placeholder'=>'valor']); ?></td></td>        
-        <td><?php echo Form::date('valor',null,['class'=>'form-control','placeholder'=>'fecha de firma']); ?></td>
-        <td><?php echo Form::file('actai2'); ?></td>
-      </tr>
-    </tbody>
-  </table>
+	<div class="row">
+ 		<div class="pane">
+  			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('Estante', null, array('class' => 'control-label col-xs-3','id' => 'estante')); ?>	
+						<div class="col-xs-3"><!-- caja de texto -->		<?php echo Form::select('Estante',$estantes ,2,['class' => 'form-control-3','id' => 'estante','onchange' => 'ventana(this.value,"estantes");',]); ?></h2>		
+						</div>	
+					</div>
+				</div>
+    		</div>
+	 		<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de caja -->
+						<?php echo Form::label('Caja', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>
+
+						<div class="col-xs-3"><!-- opciones en el valor de cajas -->
+							<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
+							<?php echo Form::select('Caja',$cajas ,2,['class' => 'form-control-3','id' => 'caja','onchange' => 'ventana(this.value,"cajas");',]); ?></h2>
+						</div>	
+					</div>    	
+				</div>
+			</div>
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('Carpeta', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+							<!-- variable $estados es enviada desde el controlador ContratoController@create -->	
+							<?php echo Form::select('Carpeta',$carpetas ,2,['class' => 'form-control-3','id' => 'carpeta','onchange' => 'ventana(this.value,"carpetas");',]); ?></h2>
+						</div>	
+					</div>
+				</div>
+			</div>	
+		</div>
 	</div>
-	<div class="col-sm-12 text-center">	
-		<?php echo Form::submit('SIGUIENTE',['class'=>'btn btn-primary']); ?>		 
-	</div>	
+	<div class="row">
+ 		<div class="pane">			 	    
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('folio inicial', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+							<!-- variable $estados es enviada desde el controlador ContratoController@create -->
+							<?php echo Form::text('folio_inicial',null,['class'=>'form-control-3','placeholder'=>'folio inicial']); ?>
+
+						</div>	
+					</div>
+				</div>
+			</div>	    	    
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('folio final', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+							<!-- variable $estados es enviada desde el controlador ContratoController@create -->
+							<?php echo Form::text('folio_final',null,['class'=>'form-control-3','placeholder'=>'folio final']); ?>
+
+						</div>	
+					</div>
+				</div>
+			</div>	    		  
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('Detalle', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- caja de texto -->	
+							<?php echo Form::text('detalle',null,['class'=>'form-control-3','placeholder'=>'Detalle']); ?>
+
+						</div>	
+					</div>
+				</div>
+			</div>  
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('Valor', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- caja de texto -->	
+							<?php echo Form::text('valor',null,['class'=>'form-control-3','placeholder'=>'$0.0']); ?>
+
+						</div>	
+					</div>
+				</div>
+			</div>  
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('Fecha de firma', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- caja de texto -->	
+							<?php echo Form::date('fecha_firma',null,['class'=>'form-control-3']); ?>
+
+						</div>	
+					</div>
+				</div>
+			</div> 
+			<div class="portfolio-items">
+				<div class="col-sm-6 portfolio-item branded logos">
+					<div class="form-group"><!-- label de carpeta -->
+						<?php echo Form::label('PDF', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+						<div class="col-xs-3"><!-- caja de texto -->	
+							<?php echo Form::file('pdf',null,['class'=>'form-control-3']); ?>
+
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>  
+	</div>   
+    <div class="row">
+ 		<div class="pane">    
+    		<div class="portfolio-items">
+    				<!-- comentario -->
+					<?php echo Form::label('Observacion',null, array('class' => 'control-label col-xs-3')); ?>
+
+					<!-- Caja de texto -->
+					<?php echo Form::textarea('observacion',null,['class'=>'form-control','placeholder'=>'Ingresa los comentarios del proyecto','size' => '30x5','Style' => 'width: 75%; height: 123px;']); ?>
+
+    		</div>
+    	</div>
+	</div>
+	<div class="col-sm-12 text-center"><!-- Caja de texto -->
+		<?php echo Form::submit('GUARDAR',['class'=>'btn btn-primary']); ?>
+
+	</div>
 	<?php echo Form::close(); ?>		 
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('layout.principal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layout.menulateral', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

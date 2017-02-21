@@ -38,6 +38,7 @@ class CarpetaController extends Controller {
 		
             Carpeta::create([
             'num_carpeta'	=>	$request['NuevaCarpeta'],
+            'id_caja'	=>	$request['NuevaCarpetaC'],
             ]);
 
             return redirect('contrato/create')->with('message', 'Carpeta Agregada');

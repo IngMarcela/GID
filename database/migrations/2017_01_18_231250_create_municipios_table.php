@@ -16,8 +16,8 @@ class CreateMunicipiosTable extends Migration {
 		{
 			// columnas que cotendra la tabla municipios y el tipo de dato de estas
 			$table->increments('id');
-			$table->integer('id_departamento')->unsigned();
 			$table->string('nom_municipio',60);
+			$table->integer('id_departamento')->unsigned();
 			$table->timestamps();
 			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 
 			$table->foreign('id_departamento')->references('id')->on('departamentos')->onUpdate('cascade');

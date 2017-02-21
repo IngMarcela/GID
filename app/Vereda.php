@@ -8,11 +8,12 @@ class Vereda extends Model {
 	protected $table = 'veredas';
 	
 	// campos a los cuales se le permitira que el usuario le asigne valores
-	protected $fillable = ['id_departamento','nom_vereda'];
+	protected $fillable = ['nom_vereda','id_municipio'];
 	
 	public static function veredas($id){
 		// retorna todos los registros de la tabla veredas que coincidan en su columna 
 		// id_municipio con el $id de entrada
 		return Vereda::where('id_municipio','=',$id)->get();
 	}
+
 }
