@@ -51,7 +51,7 @@ class ContratoCrearRequest extends Request {
 	public function messages()
     {
         return [
-            'Estante.min'   	 	=> 'El campo no esta seleccionado correctamente',
+            'Estante.min'   	 	=> 'El campo estante no esta seleccionado correctamente',
             'Caja.min'  	 	 	=> 'El campo caja no esta seleccionado correctamente',
             'Carpeta.min'	 	 	=> 'El campo carpeta no esta seleccionado correctamente',
             'Municipio.min'	 	 	=> 'El campo municipio no esta seleccionado correctamente',

@@ -241,7 +241,7 @@ AGREGAR CONTRATO
     	</div>
 	    
 	    <div class="col-sm-12 text-center"><!-- Caja de texto -->
-		{!!Form::submit('GUARDAR',['class'=>'btn btn-primary'])!!}
+		{!!Form::submit('Agregar',['class'=>'btn btn-primary'])!!}
 		</div>   
 		
 	{!!Form::close()!!}	

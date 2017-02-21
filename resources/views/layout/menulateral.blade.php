@@ -85,7 +85,8 @@
     {!!Html::script('js/bootstrap.min.js')!!}
     
     <!--select dinamicos-->
-    {!!Html::script('js/dropdown.js')!!}
+    {!!Html::script('js/dropdownEstante.js')!!}
+    {!!Html::script('js/dropdownCaja.js')!!}
     
     <!--vntana modal-->
     {!!Html::script('js/funcion.js')!!}

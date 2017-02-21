@@ -229,7 +229,7 @@ class ContratoController extends Controller {
 		//Session::flash('message','Contrato Agregado Correctamente');
 		//return Redirect::to('/contrato');
 		
-		return  redirect('/contrato')->with('message','Contrato Agregado Correctamente')->with('id', $id_contrato);
+		return  redirect('/actainicial/create')->with('message','Contrato Agregado Correctamente')->with('id', $id_contrato);
 		
 		
 		
