@@ -5,14 +5,18 @@ use GID\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-// importacion de los request que seran utilizados para la validacion de los datos que se envian desde
-// los formularios
-
 use GID\Estante;
 use GID\Folio;
 use GID\ActaInicial;
 
+// csrf token
+use Session;
+
+// importacion de los request que seran utilizados para la validacion de los datos que se envian desde
+// los formularios
 use GID\Http\Requests\ActaInicialCreateRequest;
+
+use Input;
 
 class ActaInicialController extends Controller {
 
@@ -55,7 +59,19 @@ class ActaInicialController extends Controller {
 		\DB::beginTransaction();
 
         try {
-		
+        	
+			if ($request->hasFile('PDF')) {
+				$archivo = $request->file('PDF');
+				$nombre = $archivo->getClientOriginalName();
+				\Storage::disk('local')->put($nombre,$archivo);
+				//$archivo->move('/documentos');
+			} else {
+				
+				dd($request->all());
+			
+			}
+			
+				
 		
 			\GID\ActaInicial::create([
 					'num_acta_inicial'					=>	$request['No_Acta'],
@@ -63,7 +79,7 @@ class ActaInicialController extends Controller {
 					'valor_acta_inicial'				=>	$request['Valor'],
 					'fecha_firma_acta_inicial'			=>	$request['Fecha_de_Firma'],
 					'fecha_vencimiento_acta_inicial'	=>	$request['Fecha_de_Vencimiento'],
-					'pdf_acta_inicial'					=>	$request['PDF'],
+					'pdf_acta_inicial'					=>	$nombre,
 					'observacion_acta_inicial'			=>	$request['Observacion'],
 					'id_contrato'						=>	$request['id'],
 					
@@ -83,6 +99,7 @@ class ActaInicialController extends Controller {
 					
 				]);
 			}
+		
 		
 			// Hacemos los cambios permanentes ya que no han habido errores
         	\DB::commit();
