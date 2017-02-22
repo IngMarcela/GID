@@ -11,7 +11,7 @@ active
 @include('alertas.request')
 @include('alertas.confirmacion')
 
-	{!!Form::open(['class' => 'form-horizontal','route' => 'actainicial.store','method' => 'POST','files' => true,'name' => 'form_principal', 'id' => 'form_principal'])!!}
+	{!!Form::open(['class' => 'form-horizontal','route' => 'actainicial.store','method' => 'POST','files' => true ,'name' => 'form_principal', 'id' => 'form_principal'])!!}
 	
 	
 	<div class="row">  

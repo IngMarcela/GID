@@ -32,8 +32,7 @@ class ActaInicialCreateRequest extends Request {
 			'Fecha_de_Firma' 		=>	'required|date',
 			'Fecha_de_Vencimiento'	=>	'date',
 			'Observacion' 			=>	'string|max:240',
-			//pdf					
-			//
+			'PDF'					=>	'required|mimes:pdf'					
 		];
 	}
 	public function messages()

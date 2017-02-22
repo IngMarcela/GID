@@ -10,7 +10,7 @@ active
 <?php echo $__env->make('alertas.request', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->make('alertas.confirmacion', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-	<?php echo Form::open(['class' => 'form-horizontal','route' => 'actainicial.store','method' => 'POST','files' => true,'name' => 'form_principal', 'id' => 'form_principal']); ?>
+	<?php echo Form::open(['class' => 'form-horizontal','route' => 'actainicial.store','method' => 'POST','files' => true ,'name' => 'form_principal', 'id' => 'form_principal']); ?>
 
 	
 	
