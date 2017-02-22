@@ -31,7 +31,7 @@ AGREGAR CONTRATO
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de estante -->
 					{!!Form::label('Estante', null, array('class' => 'control-label col-xs-3'))!!}	
-					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
+					<div class="col-xs-3"><!-- opciones en el valor de carpeta Estante -->
 						<!-- variable $estantes es enviada desde el controlador ContratoController@create -->	
 						{!!Form::select('Estante',$estantes ,1,['class' => 'form-control','id' => 'estante','onchange' => 'ventana(this.value,"estantes",0);',])!!}</h2>
 					</div>	
