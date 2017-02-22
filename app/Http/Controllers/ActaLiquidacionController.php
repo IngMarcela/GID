@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 // importacion de los request que seran utilizados para la validacion de los datos que se envian desde
 // los formularios
 use GID\Estante;
-use GID\Caja;
-use GID\Carpeta;
 use GID\Folio;
+use GID\ActaLiquidacion;
 
 use GID\Http\Requests\ActaLiquidacionCreateRequest;
 class ActaLiquidacionController extends Controller {
@@ -33,14 +32,12 @@ class ActaLiquidacionController extends Controller {
 	{
 		// carga los registros almacenados en la base de datos para las correspondientes tablas a las
 		// que hacen referencia los modelos
-		$cajas = Caja::lists('num_caja','id');
-		$carpetas = Carpeta::lists('num_carpeta','id');
 		$estantes = Estante::lists('num_estante','id');
 		
 		// llamado de las vistas del acta inicial
 		//la funcion de la presente acta es agregar los detalles conjunto con el pdf
 		// renderiza la vista y le envia los registros 
-		return view('contrato.actaliquidacion',compact('estantes','cajas','carpetas'));
+		return view('contrato.actaliquidacion',compact('estantes'));
 	}
 
 	/**

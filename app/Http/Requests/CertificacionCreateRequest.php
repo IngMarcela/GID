@@ -25,11 +25,11 @@ class CertificacionCreateRequest extends Request {
 			'Estante'				=>	'numeric|min:2',
 			'Caja' 					=>	'required|numeric|min:2',
 			'Carpeta'				=>	'required|numeric|min:2',
-			'folios'				=>	'numeric|min:2',
-			//'No_Acta' 			=>	'required|max:50|unique:acta,num_contrato',
-			'Entidad que certifica'	=>	'required|string',
-			'Fecha_de_expedicion' 	=>	'required|date',
-			'entregado por'			=>	'required|string',
+			'Folio_Inicial'			=>	'numeric|min:1',
+			'Folio_Final'			=>	'numeric|min:1',
+			'Entidad_que_Certifica'	=>	'required|string',
+			'Fecha_de_Expedicion' 	=>	'required|date',
+			'Entregado_por'			=>	'required|string',
 			//pdf					
 			//
 			//

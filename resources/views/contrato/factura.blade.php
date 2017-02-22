@@ -9,56 +9,56 @@ active
 @stop
 @section('content')
 @include('alertas.request')
-	{!!Form::open(['class' => 'form-horizontal','route' => 'factura.store','method' => 'POST'])!!}
+@include('alertas.confirmacion')
+
+	{!!Form::open(['class' => 'form-horizontal','route' => 'factura.store','method' => 'POST','files' => true ,'name' => 'form_principal', 'id' => 'form_principal'])!!}
 	<div class="row">
  	<div class="pane">
+ 	
  	<div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de No factura -->
-				{!!Form::label('No Factura', null, array('class' => 'control-label col-xs-3'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('Entidad que certifica',null,['class'=>'form-control-3','placeholder'=>'No factura'])!!}
+    		<div class="form-group">
+				{!!Form::label('No Factura', null, array('class' => 'control-label col-xs-3'))!!}
+				<div class="col-xs-3">
+					{!!Form::number('No_Factura',null,['class'=>'form-control-3','placeholder'=>'No Factura'])!!}
 				</div>	
 			</div>
     	</div>
-    </div>
-  	<div class="portfolio-items">
+    </div><div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de estante -->
+    		<div class="form-group">
 				{!!Form::label('Estante', null, array('class' => 'control-label col-xs-3'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->		{!!Form::select('Estante',$estantes ,2,['class' => 'form-control-3','id' => 'estante','onchange' => 'ventana(this.value,"estantes");',])!!}</h2>		
+				<div class="col-xs-3">
+					{!!Form::select('Estante',$estantes ,1,['class' => 'form-control-3','id' => 'estante','onchange' => 'ventana(this.value,"estantes",0);',])!!}</h2>		
 				</div>	
 			</div>
     	</div>
     </div>  
     <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group"><!-- label de caja -->
+	    		<div class="form-group">
 					{!!Form::label('Caja', null, array('class' => 'control-label col-xs-3'))!!}
-					<div class="col-xs-3"><!-- opciones en el valor de cajas -->
-						<!-- variable $cajas es enviada desde el controlador ContratoController@create -->	
-						{!!Form::select('Caja',$cajas ,2,['class' => 'form-control-3','id' => 'caja','onchange' => 'ventana(this.value,"cajas");',])!!}</h2>
+					<div class="col-xs-3">
+						{!!Form::select('Caja',['0' => 'Selecciona'] ,0,['class' => 'form-control-3','id' => 'caja','onchange' => 'ventana(this.value,"cajas",document.form_principal.Estante.value);',])!!}</h2>
 					</div>	
 				</div>    	
 	    	</div>
 	    </div>
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group"><!-- label de carpeta -->
+	    		<div class="form-group">
 					{!!Form::label('Carpeta', null, array('class' => 'control-label col-xs-3'))!!}	
-					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
-						<!-- variable $carpetas es enviada desde el controlador ContratoController@create -->	
-						{!!Form::select('Carpeta',$carpetas ,2,['class' => 'form-control-3','id' => 'carpeta','onchange' => 'ventana(this.value,"carpetas");',])!!}</h2>
+					<div class="col-xs-3">
+						{!!Form::select('Carpeta',['0' => 'Selecciona'] ,0,['class' => 'form-control-3','id' => 'carpeta','onchange' => 'ventana(this.value,"carpetas",document.form_principal.Caja.value);',])!!}</h2>
 					</div>	
 				</div>
 	    	</div>
 	    </div>	 	    
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group"><!-- label de folio inicial -->
+	    		<div class="form-group">
 					{!!Form::label('folio inicial', null, array('class' => 'control-label col-xs-3'))!!}	
-					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
-						<!-- variable $folio_inicials es enviada desde el controlador ContratoController@create -->
+					<div class="col-xs-3">
 						{!!Form::number('Folio_Inicial',null,['class'=>'form-control-3','placeholder'=>'folio inicial'])!!}
 					</div>	
 				</div>
@@ -66,10 +66,9 @@ active
 	    </div>	    	    
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
-	    		<div class="form-group"><!-- label de folio final -->
+	    		<div class="form-group">
 					{!!Form::label('folio final', null, array('class' => 'control-label col-xs-3'))!!}	
-					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->
-						<!-- variable $folio_finals es enviada desde el controlador ContratoController@create -->
+					<div class="col-xs-3">
 						{!!Form::number('Folio_Final',null,['class'=>'form-control-3','placeholder'=>'folio final'])!!}
 					</div>	
 				</div>
@@ -81,7 +80,7 @@ active
     		<div class="form-group"><!-- label de empresa -->
 				{!!Form::label('Empresa', null, array('class' => 'control-label col-xs-3'))!!}	
 				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('Empresa',null,['class'=>'form-control-3','placeholder'=>'No Empresa'])!!}
+					{!!Form::text('Empresa',null,['class'=>'form-control-3','placeholder'=>'Empresa'])!!}
 				</div>	
 			</div>
     	</div>
@@ -98,29 +97,33 @@ active
     </div> 
     <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de valor total-->
+    		<div class="form-group">
 				{!!Form::label('Valor Total', null, array('class' => 'control-label col-xs-3'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::text('valor Total',null,['class'=>'form-control-3','placeholder'=>'Valor total'])!!}
+				<div class="col-xs-3">	
+					{!!Form::number('Valor Total',null,['class'=>'form-control-3','placeholder'=>'$0.0'])!!}
 				</div>	
 			</div>
     	</div>
-    </div>    
-   	<div class="portfolio-items">
+    </div>   
+    <div class="portfolio-items">
     	<div class="col-sm-6 portfolio-item branded logos">
-    		<div class="form-group"><!-- label de pdf -->
+    		<div class="form-group">
 				{!!Form::label('PDF', null, array('class' => 'control-label col-xs-3'))!!}	
-				<div class="col-xs-3"><!-- caja de texto -->	
-					{!!Form::file('Pdf',null,['class'=>'form-control-3'])!!}
+				<div class="col-xs-3">	
+					{!!Form::file('PDF',null,['class'=>'form-control-3'])!!}
 				</div>	
 			</div>
     	</div>
-    </div>  
+    </div>
 	</div>
 	<div class="col-sm-12 text-center"><!-- Caja de texto -->
 		{!!Form::submit('Agregar',['class'=>'btn btn-primary'])!!}
 	</div>
 	</div> 
-    {!!Form::close()!!}		 
+    {!!Form::close()!!}		
+    
+	@include('ventanas_modales.estante')
+	@include('ventanas_modales.caja')
+	@include('ventanas_modales.carpeta') 
 @stop
 

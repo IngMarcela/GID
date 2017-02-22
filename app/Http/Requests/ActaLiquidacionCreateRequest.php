@@ -25,21 +25,23 @@ class ActaLiquidacionCreateRequest extends Request {
 			'Estante'				=>	'numeric|min:2',
 			'Caja' 					=>	'required|numeric|min:2',
 			'Carpeta'				=>	'required|numeric|min:2',
-			'folios'				=>	'numeric|min:3',
+			'Folio_Inicial'			=>	'numeric|min:1',
+			'Folio_Final'			=>	'numeric|min:1',
 			'Detalle'	 			=>	'string|max:100',
 			'Valor'					=>	'numeric|min:100000',
 			'Fecha_de_firma' 		=>	'required|date',
-			'observacion' 			=>	'string|max:240',
+			'Observacion' 			=>	'string|max:240',
+			'PDF'					=>	'required|mimes:pdf'
 			//
 		];
 	}
 	public function messages()
     {
         return [
-            'Estante.min'   	 	=> 'El campo estante debe ser distinto a 0',
-            'Caja.min'  	 	 	=> 'El campo caja debe ser distinto a 0',
-            'Carpeta.min'	 	 	=> 'El campo carpeta debe ser distinto a 0',
-            'Valor'					=> 'El campo valor presupuestado debe ser como minimo de 100,000 a 0',
+            'Estante.min'   	 	=> 'El campo estante no esta seleccionado correctamente',
+            'Caja.min'  	 	 	=> 'El campo caja no esta seleccionado correctamente',
+            'Carpeta.min'	 	 	=> 'El campo carpeta no esta seleccionado correctamente',
+            'Valor'					=> 'El campo valor presupuestado debe ser como minimo de 100,000',
         ];
     }
 

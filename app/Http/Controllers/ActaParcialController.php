@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 // los formularios
 
 use GID\Estante;
-use GID\Caja;
-use GID\Carpeta;
 use GID\Folio;
+use GID\ActaParcial;
+
 use GID\Http\Requests\ActaParcialCreateRequest;
 
 class ActaParcialController extends Controller {
@@ -35,14 +35,12 @@ class ActaParcialController extends Controller {
 		
 		// carga los registros almacenados en la base de datos para las correspondientes tablas a las
 		// que hacen referencia los modelos
-		$cajas = Caja::lists('num_caja','id');
-		$carpetas = Carpeta::lists('num_carpeta','id');
 		$estantes = Estante::lists('num_estante','id');
 		
 		// llamado de las vistas del acta inicial
 		//la funcion de la presente acta es agregar los detalles conjunto con el pdf
 		// renderiza la vista y le envia los registros 
-		return view('contrato.actaparcial',compact('estantes','cajas','carpetas'));
+		return view('contrato.actaparcial',compact('estantes'));
 	}
 
 	/**
