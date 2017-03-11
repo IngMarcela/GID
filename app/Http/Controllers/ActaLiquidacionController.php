@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use GID\Estante;
 use GID\Folio;
 use GID\ActaLiquidacion;
+use GID\Contrato;
+// csrf token
+use Session;
+
 
 use GID\Http\Requests\ActaLiquidacionCreateRequest;
 class ActaLiquidacionController extends Controller {
@@ -34,10 +38,12 @@ class ActaLiquidacionController extends Controller {
 		// que hacen referencia los modelos
 		$estantes = Estante::lists('num_estante','id');
 		
+		$ultimo_contrato = \GID\Contrato::select('id')->orderby('created_at','DESC')->take(1)->get();
+			$id_contrato = $ultimo_contrato[0]->id;
 		// llamado de las vistas del acta inicial
 		//la funcion de la presente acta es agregar los detalles conjunto con el pdf
 		// renderiza la vista y le envia los registros 
-		return view('contrato.actaliquidacion',compact('estantes'));
+		return view('contrato.actaliquidacion',compact('estantes','id_contrato'));
 	}
 
 	/**
@@ -47,8 +53,69 @@ class ActaLiquidacionController extends Controller {
 	 */
 	public function store(ActaLiquidacionCreateRequest $request)
 	{
-		return 'lo hiciste muy bn';
+		
+		\DB::beginTransaction();
+
+        try {
+        	
+			if ($request->hasFile('PDF')) {
+				$archivo = $request->file('PDF');
+				$nombre = $archivo->getClientOriginalName();
+				
+				
+				$request->file('PDF')->move('documentos',$nombre);
+				//$archivo->move('/documentos');
+			} else {
+				
+				dd($request->all());
+			
+			}
+				
+				//   le decimos al modelo 
+				//                cree un registro en la base de datos
+				\GID\ActaLiquidacion::create([
+					'detalle_acta_liquidacion'			=>	$request['Detalle'],
+					'valor_acta_liquidacion'			=>	$request['Valor'],
+					'fecha_firma_acta_liquidacion'		=>	$request['Fecha_de_Firma'],
+					'pdf_acta_liquidacion'				=>	   	$nombre,
+					'observacion_acta_liquidacion'		=>	$request['Observacion'],
+					'id_contrato'						=>	$request['id'],
+										
+			]);
+			
+			
+			$ultima_acta = \GID\Actaliquidacion::select('id')->orderby('created_at','DESC')->take(1)->get();
+			$id_acta = $ultima_acta[0]->id;
+				
+				
+			for ($i=$request['Folio_Inicial']; $i <= $request['Folio_Final'] ; $i++) {
+						 
+				\GID\Folio::create([
+				'id_carpeta' => $request['Carpeta'],
+				'id_acta_liquidacion' => $id_acta,
+				'num_folio' => $i,
+					
+				]);
+			}
+		
+		
+			// Hacemos los cambios permanentes ya que no han habido errores
+        	\DB::commit();
+			
+			
+		
+			
+		}
+        // Ha ocurrido un error, devolvemos la BD a su estado previo y hacemos lo que queramos con esa excepción
+        catch (\Exception $e)
+        {
+                \DB::rollback();
+				
+		 		return $resultado='ERROR (' . $e->getCode() . '): ' . $e->getMessage();
+        }
+		return redirect()->back()->with('message','Acta Liquidacion Agregada Correctamente');
 	}
+
 
 	/**
 	 * Display the specified resource.
@@ -58,8 +125,38 @@ class ActaLiquidacionController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$contrato = Contrato::select('contratos.id as id')
+		->join('actaliquidacions', 'contratos.id', '=', 'actaliquidacions.id_contrato')
+			->groupBy('contratos.id')
+			->where('actaliquidacions.id', '=', $id)
+			->get();
+		
+		$acta_liquidacion = ActaLiquidacion::select('estantes.num_estante as estante','cajas.num_caja as caja','carpetas.num_carpeta as carpeta','detalle_acta_liquidacion as detalle','valor_acta_liquidacion as valor','fecha_firma_acta_liquidacion as fecha_liquidacion','observacion_acta_liquidacion as observacion','pdf_acta_liquidacion as pdf','actaliquidacions.id_contrato as id')
+			->join('folios', 'actaliquidacions.id', '=', 'folios.id_acta_liquidacion')
+			->join('carpetas', 'folios.id_carpeta', '=', 'carpetas.id')
+			->join('cajas', 'carpetas.id_caja', '=', 'cajas.id')
+			->join('estantes', 'cajas.id_estante', '=', 'estantes.id')
+			->where('actaliquidacions.id', '=',$id)
+			->groupby('actaliquidacions.id')
+			->take(1)
+			->get();			
+		
+		return view('contrato.actaliquidacioninformacion',compact('acta_liquidacion','contrato'));
 	}
+	public function getActasLiquidaciones($id)
+	{
+		$contrato = Contrato::select('id')
+			->where('id', '=', $id)
+			->get();
+		
+		$acta_liquidacion = ActaLiquidacion::select('detalle_acta_liquidacion as detalle','valor_acta_liquidacion as valor','fecha_firma_acta_liquidacion as fecha','observacion_acta_liquidacion as observacion','id')
+			->where('id_contrato', '=',$id)
+			->paginate(5);
+		
+		return view('contrato.actaliquidacionpaginacion',compact('acta_liquidacion','contrato'));
+	}
+	
+
 
 	/**
 	 * Show the form for editing the specified resource.

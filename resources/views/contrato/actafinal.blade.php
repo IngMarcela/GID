@@ -14,6 +14,7 @@ active
 
 	{!!Form::open(['class' => 'form-horizontal','route' => 'actafinal.store','method' => 'POST','files' => true ,'name' => 'form_principal', 'id' => 'form_principal'])!!}
 	
+	{!!Form::hidden('id',$id_contrato)!!}
 	<div class="row">
  		<div class="pane">
   			<div class="portfolio-items">
@@ -74,6 +75,7 @@ active
 				<div class="col-sm-6 portfolio-item branded logos">
 					<div class="form-group">
 							{!!Form::label('Detalle', null, array('class' => 'control-label col-xs-3'))!!}
+							{!!Form::label('*', null, array('class' => 'control-label col-xs-1'))!!}	
 						<div class="col-xs-3">	
 							{!!Form::text('Detalle',null,['class'=>'form-control-3','placeholder'=>'Detalle'])!!}
 						</div>	
@@ -84,6 +86,7 @@ active
 				<div class="col-sm-6 portfolio-item branded logos">
 					<div class="form-group">
 							{!!Form::label('Valor', null, array('class' => 'control-label col-xs-3'))!!}	
+							{!!Form::label('*', null, array('class' => 'control-label col-xs-1'))!!}	
 						<div class="col-xs-3">	
 							{!!Form::number('Valor',null,['class'=>'form-control-3','placeholder'=>'$0.0'])!!}
 						</div>	
@@ -94,8 +97,9 @@ active
 				<div class="col-sm-6 portfolio-item branded logos">
 					<div class="form-group">
 							{!!Form::label('Fecha de firma', null, array('class' => 'control-label col-xs-3'))!!}		
+							{!!Form::label('*', null, array('class' => 'control-label col-xs-1'))!!}	
 						<div class="col-xs-3">	
-							!!Form::date('Fecha_de_Firma',null,['class'=>'form-control-3'])!!
+							{!!Form::date('Fecha_de_Firma',null,['class'=>'form-control-3'])!!}
 						</div>	
 					</div>
 				</div>
@@ -103,7 +107,8 @@ active
 			<div class="portfolio-items">
 				<div class="col-sm-6 portfolio-item branded logos">
 					<div class="form-group">						
-							{!!Form::label('PDF', null, array('class' => 'control-label col-xs-3'))!!}
+							{!!Form::label('PDF', null, array('class' => 'control-label col-xs-3','acept'=>'application/pdf'))!!}
+							{!!Form::label('*', null, array('class' => 'control-label col-xs-1'))!!}	
 						<div class="col-xs-3">	
 							{!!Form::file('PDF',null,['class'=>'form-control-3'])!!}
 						</div>	

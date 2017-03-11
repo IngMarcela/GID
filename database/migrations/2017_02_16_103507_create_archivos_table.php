@@ -15,7 +15,6 @@ class CreateArchivosTable extends Migration {
 		Schema::create('archivos', function(Blueprint $table)
 		{
 			$table->increments('id');	
-			$table->integer('num_archivo')->unsigned();
 			$table->text('detalle_archivo',500);
 			$table->string('pdf_archivo',100);
 			$table->string('observacion_archivo',250)->nullable();	

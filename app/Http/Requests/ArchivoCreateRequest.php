@@ -22,14 +22,14 @@ class ArchivoCreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'Estante'				=>	'numeric|min:2',
-			'Caja' 					=>	'required|numeric|min:2',
-			'Carpeta'				=>	'required|numeric|min:2',
+			'Estante'				=>	'required|numeric|min:1',
+			'Caja' 					=>	'required|numeric|min:1',
+			'Carpeta'				=>	'required|numeric|min:1',
 			'Folio_Inicial'			=>	'numeric|min:1',
 			'Folio_Final'			=>	'numeric|min:1',
-			'Detalle'	 			=>	'string|max:100',
+			'Detalle'	 			=>	'required|string|max:100',
 			'Observacion' 			=>	'string|max:240',
-			'PDF'					=>	'required|mimes:pdf'
+			'PDF'					=>	'required|mimes:pdf|max:25000'
 		];
 	}
 	public function messages()

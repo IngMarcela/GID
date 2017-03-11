@@ -22,15 +22,15 @@ class CertificacionCreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'Estante'				=>	'numeric|min:2',
-			'Caja' 					=>	'required|numeric|min:2',
-			'Carpeta'				=>	'required|numeric|min:2',
+			'Estante'				=>	'required|numeric|min:1',
+			'Caja' 					=>	'required|numeric|min:1',
+			'Carpeta'				=>	'required|numeric|min:1',
 			'Folio_Inicial'			=>	'numeric|min:1',
 			'Folio_Final'			=>	'numeric|min:1',
 			'Entidad_que_Certifica'	=>	'required|string',
 			'Fecha_de_Expedicion' 	=>	'required|date',
-			'Entregado_por'			=>	'required|string',
-			//pdf					
+			'Entregado_por'			=>	'required|string',			
+			'PDF'					=>	'required|mimes:pdf',
 			//
 			//
 		];

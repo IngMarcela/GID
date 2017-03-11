@@ -87,7 +87,9 @@ AGREGAR CONTRATO
 		<div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- label de No contrato -->
-					<?php echo Form::label('No Contrato', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>	
+					<?php echo Form::label('No Contrato', null, array('class' => 'control-label col-xs-3','id' => 'contrato')); ?>
+
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>	
 					<div class="col-xs-3"><!-- caja de texto -->	
 						<?php echo Form::text('No_Contrato',null,['class'=>'form-control','placeholder'=>'No de contrato']); ?>
 
@@ -99,6 +101,8 @@ AGREGAR CONTRATO
 	    	<div class="col-sm-6 portfolio-item branded logos">
 	    		<div class="form-group"><!-- estado del contrato -->
 					<?php echo Form::label('Estado del Contrato', null, array('class' => 'control-label col-xs-3')); ?>
+
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
 
 					<div class="col-xs-3"><!-- opciones en el valor del estado del contrato -->
 						<!-- variable $estados es enviada desde el controlador ContratoController@create -->
@@ -113,6 +117,8 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- label del tipo de contrto -->
 					<?php echo Form::label('Tipo de Contrato', null, array('class' => 'control-label col-xs-3')); ?>
 
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
+
 					<div class="col-xs-3"><!-- seleccion de opcuon del tipo de contrato -->
 						<!-- variable $tipo_contratos es enviada desde el controlador ContratoController@create -->
 						<?php echo Form::select('Tipo_de_Contrato',$tipo_contratos,null,['class' => 'form-control']); ?>
@@ -126,6 +132,8 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- label de la fecha en que se firma el contrato -->
 					<?php echo Form::label('Fecha de Inicio',null, array('class' => 'control-label col-xs-3')); ?>
 
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
+
 					<div class="col-xs-3"><!-- un panel con el calendario -->
 						<?php echo Form::date('Fecha_de_Inicio',null,['class'=>'form-control']); ?>
 
@@ -138,6 +146,8 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- label del objeto -->
 				<?php echo Form::label('Objeto',null, array('class' => 'control-label col-xs-3')); ?>
 
+				<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
+
 				<div class="col-xs-3"><!-- caja de texto, pero con gran espacio -->
 					<?php echo Form::textarea('Objeto',null,['class'=>'form-control','placeholder'=>'Ingresa el Objeto del Contrato','size' => '20x5']); ?>
 
@@ -149,6 +159,8 @@ AGREGAR CONTRATO
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- label de Departamento -->
 					<?php echo Form::label('Departamento',null, array('class' => 'control-label col-xs-3')); ?>
+
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
 
 					<div class="col-xs-3"><!--  -->
 						<!-- variable $departamentos es enviada desde el controlador ContratoController@create -->
@@ -187,6 +199,8 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- valor en que se firmo el contrato -->
 					<?php echo Form::label('Valor Presupuestado',null, array('class' => 'control-label col-xs-3')); ?>
 
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
+
 					<div class="col-xs-3"><!-- caja de texto -->
 						<?php echo Form::number('Valor_Presupuestado',null,['class'=>'form-control','placeholder'=>'Ingresa el valor total']); ?>
 
@@ -198,6 +212,8 @@ AGREGAR CONTRATO
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- valor en que se finalizo -->
 					<?php echo Form::label('Valor Ejecutado',null, array('class' => 'control-label col-xs-3')); ?>
+
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
 
 					<div class="col-xs-3"><!-- caja de texto -->
 						<?php echo Form::number('Valor_Ejecutado',null,['class'=>'form-control','placeholder'=>'Ingresa el valor ejecutada']); ?>
@@ -211,6 +227,8 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- label del contratante -->
 					<?php echo Form::label('Contratante',null, array('class' => 'control-label col-xs-3')); ?>
 
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
+
 					<div class="col-xs-3"><!-- caja de texto -->
 						<?php echo Form::text('Contratante',null,['class'=>'form-control','placeholder'=>'Ingresa el Contratante']); ?>
 
@@ -223,6 +241,8 @@ AGREGAR CONTRATO
 				<div class="form-group"><!-- label del tipo de contratante -->
 					<?php echo Form::label('Tipo de Contratante', null, array('class' => 'control-label col-xs-3')); ?>
 
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
+
 					<div class="col-xs-3"><!-- Fseleccionar el tipo de contratante -->
 						<!-- variable $tipo_contratantes es enviada desde el controlador ContratoController@create -->
 						<?php echo Form::select('Tipo_de_Contratante',$tipo_contratantes,null,['class' => 'form-control']); ?>
@@ -234,7 +254,8 @@ AGREGAR CONTRATO
 	    <div class="portfolio-items">
 	    	<div class="col-sm-6 portfolio-item branded logos">
 				<div class="form-group"><!-- label de contratista -->
-					<?php echo Form::label('Contratista',null, array('class' => 'control-label col-xs-3')); ?>
+					<?php echo Form::label('Contratista',null, array('class' => 'control-label col-xs-3')); ?>					
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>
 
 					<div class="col-xs-3"><!-- Opciones del contratista -->
 						<!-- variable $contratistas es enviada desde el controlador ContratoController@create -->
@@ -251,6 +272,19 @@ AGREGAR CONTRATO
 					<div class="col-xs-3"><!-- caja de texto -->	
 						<?php echo Form::text('RUP',null,['class'=>'form-control','id' => 'rup','placeholder'=>'No de contrato']); ?>
 
+					</div>	
+				</div>
+	    	</div>
+	    </div>
+	    <div class="portfolio-items">
+	    	<div class="col-sm-6 portfolio-item branded logos">
+	    		<div class="form-group"><!-- label de carpeta -->
+					<?php echo Form::label('Estado del RUP', null, array('class' => 'control-label col-xs-3')); ?>
+
+					<?php echo Form::label('*', null, array('class' => 'control-label col-xs-1')); ?>	
+					<div class="col-xs-3"><!-- opciones en el valor de carpetas -->						
+						
+						<?php echo Form::select('Estado_del_rup',['0' => 'Ingresado', '1' => 'No Ingresado'] ,0,['class' => 'form-control']); ?></h2>
 					</div>	
 				</div>
 	    	</div>

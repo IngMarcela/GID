@@ -15,9 +15,10 @@ class CreateCertificacionsTable extends Migration {
 		Schema::create('certificacions', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('Entidad_certifica',100);
+			$table->string('entidad_certifica',100);
 			$table->date('fecha_expedicion_certificacion');
 			$table->string('pdf_certificacion',100);
+			$table->string('entregado_por',100);
 			$table->integer('id_contrato')->unsigned();
 			$table->timestamps();
 			// columnas que son llaves foraneas y su respectiva tabla a la que hacen referencia 

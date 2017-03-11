@@ -8,6 +8,6 @@ class Factura extends Model {
 	protected $table = 'facturas';
 	// campos a los cuales se le permitira que el usuario le asigne valores
 	protected $fillable =[
-							'num_factura','detalle_factura','pdf_factura','observacion_factura',
+							'num_factura','empresa_factura','detalle_factura','valor_factura','pdf_factura',
 							'id_contrato'];
 }

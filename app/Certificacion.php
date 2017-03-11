@@ -8,7 +8,7 @@ class Certificacion extends Model {
 	protected $table = 'certificacions';
 	// campos a los cuales se le permitira que el usuario le asigne valores
 	protected $fillable =[
-						  	'Entidad_certifica','fecha_expedicion_certificacion','entregado_por_certifiacion','pdf_certificacion',
+						  	'entidad_certifica','fecha_expedicion_certificacion','entregado_por','pdf_certificacion',
 							'id_contrato'];
 
 }

@@ -2704,3 +2704,26 @@ input.btn.btn-primary
     width: 150px;
     border-radius: 5px;
 }
+label.control-label.col-xs-1 {
+    width: 1px;
+    color: red;
+    font-size: x-large;
+    padding: inherit;
+    margin: initial;
+}
+img {
+    width: 40px;
+    height: 30px;
+}
+th.centro {
+    width: 76.8px;
+    height: 66px;
+}
+a.mas {
+    font-size: xx-large;
+    color: #09971b;
+}
+img.mas {
+    width: 80px;
+    height: 80px;
+}

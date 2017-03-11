@@ -43,9 +43,9 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">HOME</a></li>
-                        <li class="dropdown"><a href="contratos">CONTRATOS</a></li>                    
-                        <li class="dropdown"><a href="otrosis">OTROSI</a></li>
-                        <li class="dropdown"><a href="documentos">DOCUMENTOS </a></li>            
+                        <li class="dropdown"><a href="/contrato">CONTRATOS</a></li>                    
+                        <li class="dropdown"><a href="/otrosis">OTROSI</a></li>
+                        <li class="dropdown"><a href="/documentos">DOCUMENTOS </a></li>            
                     </ul>
                 </div>
 

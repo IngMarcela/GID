@@ -21,6 +21,7 @@ class CreateContratosTable extends Migration {
 			$table->date('fecha_inicio');			
 			$table->integer('valor_presupuestado')->unsigned();
 			$table->integer('valor_ejecutado')->unsigned()->nullable();
+			$table->tinyinteger('estado_rup');
 			$table->string('comentario',250)->nullable();
 			$table->integer('id_vereda')->unsigned()->nullable();
 			$table->integer('id_municipio')->unsigned();

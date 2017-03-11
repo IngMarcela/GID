@@ -22,12 +22,12 @@ class ActaInicialCreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'Estante'				=>	'numeric|min:1',
+			'Estante'				=>	'required|numeric|min:1',
 			'Caja' 					=>	'required|numeric|min:1',
 			'Carpeta'				=>	'required|numeric|min:1',
 			'Folio_Inicial'			=>	'numeric|min:1',
 			'No_Acta' 				=>	'required|numeric',
-			'Detalle'	 			=>	'string|max:100',
+			'Detalle'	 			=>	'required|string|max:100',
 			'Valor'					=>	'numeric|min:100000',
 			'Fecha_de_Firma' 		=>	'required|date',
 			'Fecha_de_Vencimiento'	=>	'date',
@@ -42,6 +42,7 @@ class ActaInicialCreateRequest extends Request {
             'Caja.min'  	 	 	=> 'El campo caja no esta seleccionado correctamente',
             'Carpeta.min'	 	 	=> 'El campo carpeta no esta seleccionado correctamente',
             'Valor'					=> 'El campo valor presupuestado debe ser como minimo de 100,000',
+			'PDF'					=> 'El archivo ingresado debe ser en formato PDF'
         ];
     }
 

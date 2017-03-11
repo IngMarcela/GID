@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use GID\Estante;
 use GID\Folio;
 use GID\ActaInicial;
+use GID\Contrato;
 
 // csrf token
 use Session;
@@ -42,10 +43,13 @@ class ActaInicialController extends Controller {
 		// que hacen referencia los modelos
 		$estantes = Estante::lists('num_estante','id');
 		
+		$ultimo_contrato = \GID\Contrato::select('id')->orderby('created_at','DESC')->take(1)->get();
+			$id_contrato = $ultimo_contrato[0]->id;
+		
 		// llamado de las vistas del acta inicial
 		//la funcion de la presente acta es agregar los detalles conjunto con el pdf
 		// renderiza la vista y le envia los registros 
-		return view('contrato.actainicial',compact('estantes'));
+		return view('contrato.actainicial',compact('estantes','id_contrato'));
 	}
 
 	/**
@@ -63,7 +67,8 @@ class ActaInicialController extends Controller {
 			if ($request->hasFile('PDF')) {
 				$archivo = $request->file('PDF');
 				$nombre = $archivo->getClientOriginalName();
-				\Storage::disk('local')->put($nombre,$archivo);
+				
+				$request->file('PDF')->move('documentos',$nombre);
 				//$archivo->move('/documentos');
 			} else {
 				
@@ -79,7 +84,7 @@ class ActaInicialController extends Controller {
 					'valor_acta_inicial'				=>	$request['Valor'],
 					'fecha_firma_acta_inicial'			=>	$request['Fecha_de_Firma'],
 					'fecha_vencimiento_acta_inicial'	=>	$request['Fecha_de_Vencimiento'],
-					'pdf_acta_inicial'					=>	$nombre,
+					'pdf_acta_inicial'					=>		$nombre,
 					'observacion_acta_inicial'			=>	$request['Observacion'],
 					'id_contrato'						=>	$request['id'],
 					
@@ -115,8 +120,7 @@ class ActaInicialController extends Controller {
 				
 		 		return $resultado='ERROR (' . $e->getCode() . '): ' . $e->getMessage();
         }
-
-		return 'lo hiciste muy bn';
+		return redirect()->back()->with('message','Acta Inicial  Agregada Correctamente');
 	}
 
 	/**
@@ -127,8 +131,37 @@ class ActaInicialController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$contrato = Contrato::select('contratos.id as id')
+		->join('actainicials', 'contratos.id', '=', 'actainicials.id_contrato')
+			->groupBy('contratos.id')
+			->where('actainicials.id', '=', $id)
+			->get();
+		
+		$acta_inicial = ActaInicial::select('num_acta_inicial as no','estantes.num_estante as estante','cajas.num_caja as caja','carpetas.num_carpeta as carpeta','detalle_acta_inicial as detalle','valor_acta_inicial as valor','fecha_firma_acta_inicial as fecha_inicial','fecha_vencimiento_acta_inicial as vencimiento','observacion_acta_inicial as observacion','pdf_acta_inicial as pdf','actainicials.id_contrato as id')
+			->join('folios', 'actainicials.id', '=', 'folios.id_acta_inicial')
+			->join('carpetas', 'folios.id_carpeta', '=', 'carpetas.id')
+			->join('cajas', 'carpetas.id_caja', '=', 'cajas.id')
+			->join('estantes', 'cajas.id_estante', '=', 'estantes.id')
+			->where('actainicials.id', '=',$id)
+			->groupby('actainicials.id')			
+			->take(1)
+			->get();
+		
+		return view('contrato.actainicialinformacion',compact('acta_inicial','contrato'));
 	}
+	public function getActasIniciales($id)
+	{
+		$contrato = Contrato::select('id')
+			->where('id', '=', $id)
+			->get();
+		
+		$acta_inicial = ActaInicial::select('detalle_acta_inicial as detalle','valor_acta_inicial as valor','fecha_firma_acta_inicial as fecha','observacion_acta_inicial as observacion','id')
+			->where('id_contrato', '=',$id)
+			->paginate(5);
+		
+		return view('contrato.actainicialpaginacion',compact('acta_inicial','contrato'));
+	}
+	
 
 	/**
 	 * Show the form for editing the specified resource.

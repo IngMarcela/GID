@@ -189,6 +189,7 @@ class ContratoController extends Controller {
 				'id_vereda' 			=> 	$vereda,
 				'id_municipio' 			=> 	$request['Municipio'],
 				'id_estado' 			=> 	$request['Estado_del_Contrato'],
+				'estado_rup'			=>  $request['Estado_del_rup'],
 				'id_tipo_contrato' 		=> 	$request['Tipo_de_Contrato'],
 				'id_contratante' 		=> 	$id_contratante,
 				'id_contratista' 		=> 	$id_contratista,
@@ -243,7 +244,25 @@ class ContratoController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$contrato = Contrato::select('contratos.id as id','estantes.num_estante as estante','cajas.num_caja as caja','carpetas.num_carpeta as carpeta','num_contrato','estado','tipo_contrato','fecha_inicio','objeto','departamentos.nom_departamento as departamento','municipios.nom_municipio as municipio','valor_presupuestado','valor_ejecutado','contratantes.contratante as contratante','tipocontratantes.tipo_contratante as tipo_contratante','contratistas.contratista as contratista','rups.serie_rup as serie','comentario')
+			->join('folios', 'contratos.id', '=', 'folios.id_contrato')
+			->join('carpetas', 'folios.id_carpeta', '=', 'carpetas.id')
+			->join('cajas', 'carpetas.id_caja', '=', 'cajas.id')
+			->join('estantes', 'cajas.id_estante', '=', 'estantes.id')
+			->join('municipios', 'contratos.id_municipio', '=', 'municipios.id')			
+			->join('departamentos', 'municipios.id_departamento', '=', 'departamentos.id')
+			->join('contratantes', 'contratos.id_contratante', '=', 'contratantes.id')
+			->join('tipocontratantes', 'contratantes.id_tipo_contratante', '=', 'tipocontratantes.id')
+			->join('contratistas', 'contratos.id_contratista', '=', 'contratistas.id')
+			->join('rups', 'contratos.id_contratista', '=', 'rups.id_contratista')
+			->join('estados', 'contratos.id_estado', '=', 'estados.id')
+			->join('tipocontratos','contratos.id_tipo_contrato', '=', 'tipocontratos.id')
+			->where('contratos.id', '=',$id)
+			->groupBy('contratos.id')
+			->take(1)
+			->get();
+		
+		return view('contrato.ver',compact('contrato'));
 		
 	}
 
@@ -301,5 +320,34 @@ class ContratoController extends Controller {
 				
 		}
         return view('contrato.buscar',compact('Contratos'));
+	}
+	public function buscarSinRup(Request $request)
+	{
+		//creacion de la variable 
+		//hace referencia al namespace de la aplicaci�n 
+		//dentro de la aplicacion referenciamos el modelo con el User 
+		//all traer todos los elementros que contiene los elementos del modelo User 
+		//paginate los divide en seccioness
+		$contratos = Contrato::select('contratos.id as id','estantes.num_estante as estante','cajas.num_caja as caja','carpetas.num_carpeta as carpeta','num_contrato','municipios.nom_municipio as municipio','valor_ejecutado','contratantes.contratante as contratante','contratistas.contratista as contratista')
+			->join('folios', 'contratos.id', '=', 'folios.id_contrato')
+			->join('carpetas', 'folios.id_carpeta', '=', 'carpetas.id')
+			->join('cajas', 'carpetas.id_caja', '=', 'cajas.id')
+			->join('estantes', 'cajas.id_estante', '=', 'estantes.id')
+			->join('municipios', 'contratos.id_municipio', '=', 'municipios.id')
+			->join('contratantes', 'contratos.id_contratante', '=', 'contratantes.id')
+			->join('contratistas', 'contratos.id_contratista', '=', 'contratistas.id')
+			->where('estado_rup', '=','1')
+			->groupBy('contratos.id')
+			->orderBy('contratos.fecha_inicio','desc')
+			->paginate(5);
+		
+		//Retorna una vista donde se entuentra el usuario con su respectivo vista
+		//enviar informaci�n 
+		//compact, manera adecuada que en la vista contenga la informacion
+		//basado en la variable user 
+		//la informacion de encuentra en la vista
+				
+		
+        return view('contrato.buscar_rup',compact('contratos'));
 	}
 }

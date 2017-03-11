@@ -22,14 +22,14 @@ class ActaLiquidacionCreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'Estante'				=>	'numeric|min:2',
-			'Caja' 					=>	'required|numeric|min:2',
-			'Carpeta'				=>	'required|numeric|min:2',
+			'Estante'				=>	'required|numeric|min:1',
+			'Caja' 					=>	'required|numeric|min:1',
+			'Carpeta'				=>	'required|numeric|min:1',
 			'Folio_Inicial'			=>	'numeric|min:1',
 			'Folio_Final'			=>	'numeric|min:1',
-			'Detalle'	 			=>	'string|max:100',
-			'Valor'					=>	'numeric|min:100000',
-			'Fecha_de_firma' 		=>	'required|date',
+			'Detalle'	 			=>	'required|string|max:100',
+			'Valor'					=>	'required|numeric|min:100000',
+			'Fecha_de_Firma' 		=>	'required|date',
 			'Observacion' 			=>	'string|max:240',
 			'PDF'					=>	'required|mimes:pdf'
 			//

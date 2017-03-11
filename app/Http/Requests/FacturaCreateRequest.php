@@ -22,15 +22,15 @@ class FacturaCreateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'Estante'				=>	'numeric|min:2',
-			'Caja' 					=>	'required|numeric|min:2',
-			'Carpeta'				=>	'required|numeric|min:2',
+			'Estante'				=>	'required|numeric|min:1',
+			'Caja' 					=>	'required|numeric|min:1',
+			'Carpeta'				=>	'required|numeric|min:1',
 			'Folio_Inicial'			=>	'numeric|min:1',
 			'Folio_Final'			=>	'numeric|min:1',
 			'No_Factura' 			=>	'max:10',
 			'Empresa'	 			=>	'required|string|max:100',
-			'Detalle'	 			=>	'string|max:100',
-			'Valor_total'			=>	'required|numeric|min:100000',
+			'Detalle'	 			=>	'required|string|max:100',
+			'Valor_Total'			=>	'required|numeric|min:10000',
 			'PDF'					=>	'required|mimes:pdf'	
 			//
 			//

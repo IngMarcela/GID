@@ -11,18 +11,59 @@
 |
 */
 Route::get('/','FrontController@index');
-//Rutas de la pagina principal de contratos
-Route::resource('contratos','ContratoController');
+
 //Actas de contrato
 Route::resource('actainicial','ActaInicialController');
 Route::resource('actaparcial','ActaParcialController');
 Route::resource('actafinal','ActaFinalController');
 Route::resource('actaliquidacion','ActaLiquidacionController');
 
+//paginacion acta inicial
+Route::get('inicial_paginacion/{id}',[
+    'uses' => 'ActaInicialController@getActasIniciales',
+    'as'   => 'inicial_paginacion'
+]);
+//paginacion acta parcial
+Route::get('parcial_paginacion/{id}',[
+    'uses' => 'ActaParcialController@getActasParciales',
+    'as'   => 'parcial_paginacion'
+]);
+//paginacion acta final
+Route::get('final_paginacion/{id}',[
+    'uses' => 'ActaFinalController@getActasFinales',
+    'as'   => 'final_paginacion'
+]);
+//paginacion acta liquidacion
+Route::get('liquidacion_paginacion/{id}',[
+    'uses' => 'ActaLiquidacionController@getActasLiquidaciones',
+    'as'   => 'liquidacion_paginacion'
+]);
+//paginacion certificacion
+Route::get('certificacion_paginacion/{id}',[
+    'uses' => 'CertificacionController@getCertificaciones',
+    'as'   => 'certificacion_paginacion'
+]);
+
+//paginacion factura
+Route::get('factura_paginacion/{id}',[
+    'uses' => 'FacturaController@getFacturas',
+    'as'   => 'factura_paginacion'
+]);
+
+//paginacion archivo
+Route::get('archivo_paginacion/{id}',[
+    'uses' => 'ArchivoController@getArchivos',
+    'as'   => 'archivo_paginacion'
+]);
+
+
+
 //archivos de contrato
 Route::resource('archivo','ArchivoController');
 //buscar contrato
 Route::get('buscar','contratoController@buscar');
+Route::get('buscar_sin_rup','ContratoController@buscarSinRup');
+
 //certificacion de contrato
 Route::resource('certificacion','CertificacionController');
 //certificacion de factura

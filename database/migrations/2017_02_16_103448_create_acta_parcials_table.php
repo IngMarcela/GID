@@ -14,7 +14,8 @@ class CreateActaParcialsTable extends Migration {
 	{
 		Schema::create('actaparcials', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id');			
+			$table->string('detalle_acta_parcial',100);
 			$table->string('pdf_acta_parcial',100);
 			$table->string('observacion_acta_parcial',250)->nullable();
 			$table->integer('id_contrato')->unsigned();

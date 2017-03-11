@@ -38,21 +38,22 @@
         </div>
    </section>    
     <!--/#about-company-->   
+    @foreach($contrato as $c)
     <section id="projects" class="padding-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-4">
                     <div class="sidebar portfolio-sidebar">
                         <div class="sidebar-item categories">
-                            <h4>AGREGAR CONTRATO</h4>
+                            <h4>SOPORTE DE CONTRATO</h4>
                             <ul class="nav navbar-stacked">
-                               	<li class="@yield('act1')"><a href="/actainicial/create">ACTA INICIAL<span class="pull-right"></span></a></li>
-                                <li class="@yield('act2')"><a href="/actaparcial/create">ACTA PARCIAL<span class="pull-right"></span></a></li>
-                                <li class="@yield('act3')"><a href="/actafinal/create">ACTA FINAL<span class="pull-right"></span></a></li>
-                                <li class="@yield('act4')"><a href="/actaliquidacion/create">ACTA LIQUIDACION<span class="pull-right"></span></a></li>
-                                <li class="@yield('act5')"><a href="/certificacion/create">CERTIFICACIÓN<span class="pull-right"></span></a></li>
-                                <li class="@yield('act6')"><a href="/factura/create">FACTURA<span class="pull-right"></span></a></li>
-                                <li class="@yield('act7')"><a href="/archivo/create">ARCHIVOS EXTRAS<span class="pull-right"></span></a></li>
+                               	<li class="@yield('act1')"><a href="{{ route('inicial_paginacion', $c->id) }}">ACTA INICIAL<span class="pull-right"></span></a></li>
+                                <li class="@yield('act2')"><a href="{{ route('parcial_paginacion', $c->id) }}">ACTA PARCIAL<span class="pull-right"></span></a></li>
+                                <li class="@yield('act3')"><a href="{{ route('final_paginacion', $c->id) }}">ACTA FINAL<span class="pull-right"></span></a></li>
+                                <li class="@yield('act4')"><a href="{{ route('liquidacion_paginacion', $c->id) }}">ACTA LIQUIDACION<span class="pull-right"></span></a></li>
+                                <li class="@yield('act5')"><a href="{{ route('certificacion_paginacion', $c->id) }}">CERTIFICACIÓN<span class="pull-right"></span></a></li>
+                                <li class="@yield('act6')"><a href="{{ route('factura_paginacion', $c->id) }}">FACTURA<span class="pull-right"></span></a></li>
+                                <li class="@yield('act7')"><a href="{{ route('archivo_paginacion', $c->id) }}">ARCHIVOS EXTRAS<span class="pull-right"></span></a></li>
                                 <li><a href="/contrato">FINALIZAR<span class="pull-right"></span></a></li>
                             </ul>
                         </div>                      
@@ -67,7 +68,8 @@
             </div>
         </div>
     </section>
-
+    
+	@endforeach
     <!--/#team-->
 
     <footer id="footer">
